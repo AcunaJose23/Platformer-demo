@@ -329,7 +329,7 @@ shape = SubResource("CircleShape2D_sc4of")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="rama" unique_id=1054370740]
 
-[node name="Area2D" type="Area2D" parent="rama" unique_id=75632645]
+[node name="Area2D" type="Area2D" parent="rama" unique_id=1044205507]
 
 [connection signal="body_entered" from="npc/Area2D" to="npc" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="npc/Area2D" to="npc" method="_on_area_2d_body_exited"]
