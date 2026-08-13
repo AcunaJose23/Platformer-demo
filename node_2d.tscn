@@ -323,5 +323,11 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="npc/Area2D" unique_id=531031768]
 shape = SubResource("CircleShape2D_sc4of")
 
+[node name="rama" type="CharacterBody2D" parent="." unique_id=683743821]
+
+[node name="Sprite2D" type="Sprite2D" parent="rama" unique_id=1189913103]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rama" unique_id=1054370740]
+
 [connection signal="body_entered" from="npc/Area2D" to="npc" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="npc/Area2D" to="npc" method="_on_area_2d_body_exited"]
