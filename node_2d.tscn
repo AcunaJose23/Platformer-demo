@@ -179,9 +179,6 @@ tile_set = SubResource("TileSet_sc4of")
 [node name="Branch" parent="." unique_id=1385112389 instance=ExtResource("6_kdubu")]
 position = Vector2(49, 91)
 
-[node name="Branch5" parent="." unique_id=739586488 instance=ExtResource("6_kdubu")]
-position = Vector2(35, -8)
-
 [node name="Branch2" parent="." unique_id=775281010 instance=ExtResource("6_kdubu")]
 position = Vector2(76, 5)
 
