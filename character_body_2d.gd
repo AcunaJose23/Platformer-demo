@@ -10,6 +10,7 @@ var idle_time = 0.0
 var running = false
 var running_time = 0.0
 var friction = false
+var time_elapsed: float = 0.0
 
 #vars rama
 var is_hanging = false
@@ -178,3 +179,10 @@ func _physics_process(delta: float) -> void:
 		idle_time = 0.0
 
 	move_and_slide()
+	
+func _process(delta: float) -> void:
+	time_elapsed += delta
+	
+	# --- OPCIÓN 1: Solo segundos (Ej: "Tiempo: 15") ---
+	# Usamos int() para borrar los decimales
+	$CanvasLayer/Label.text = "Time: " + str(int(time_elapsed))
