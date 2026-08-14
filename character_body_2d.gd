@@ -132,13 +132,11 @@ func _physics_process(delta: float) -> void:
 			running = false
 		var direction := Input.get_axis("ui_left", "ui_right")
 		if direction and running == true:
-			idle_time = 0.0
 			velocity.x = direction * speed
 			running_time += delta
 			if running_time > 1.5:
 				friction = true
 		elif direction:
-			idle_time = 0.0
 			velocity.x = direction * speed
 			running_time = 0.0
 			friction = false
@@ -148,17 +146,19 @@ func _physics_process(delta: float) -> void:
 			else:
 				velocity.x = move_toward(velocity.x, 0, speed)
 		if velocity.x == 0:
-			idle_time += delta
 			running_time = 0.0
 			friction = false
-			if idle_time >= 3:
-				$Sprite2D.play("idle")
 		if direction != 0:
 			$Sprite2D.play("default")
 			if direction > 0:
 				$Sprite2D.flip_h = false
 			if direction < 0:
 				$Sprite2D.flip_h = true
-		
+	if is_on_floor() and velocity.x == 0 and not is_hanging:
+		idle_time += delta
+		if idle_time >= 3.0:
+			$Sprite2D.play("idle")
+	else:
+		idle_time = 0.0
 
 	move_and_slide()
