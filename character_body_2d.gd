@@ -15,7 +15,7 @@ var friction = false
 var is_hanging = false
 var active_branch : Node2D = null
 #jump buffering
-var jump_buffer_time = 0
+var jump_buffer_time: float = 0
 const JUMP_BUFFER_TIME = 0.1
 
 func _ready() -> void:
@@ -84,8 +84,11 @@ func _physics_process(delta: float) -> void:
 			$Sprite2D.modulate = Color.WHITE
 			
 		# Soltarse sin saltar presionando abajo (si no estaba cargando salto)
-		if Input.is_action_just_released("charge_jump") and jump_hold_time == 0.0:
-			is_hanging = false
+		if Input.is_action_just_released("charge_jump"):
+			if jump_hold_time <= 0.0:
+				is_hanging = false
+			jump_hold_time = 0.0
+			$Sprite2D.modulate = Color.WHITE
 			
 		move_and_slide()
 		return
