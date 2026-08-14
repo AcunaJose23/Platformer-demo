@@ -352,7 +352,10 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="npc/Area2D" unique_id=531031768]
 shape = SubResource("CircleShape2D_sc4of")
 
-[node name="Branch3" parent="." unique_id=739586488 instance=ExtResource("6_kdubu")]
+[node name="Branch4" parent="." unique_id=739586488 instance=ExtResource("6_kdubu")]
+position = Vector2(76, 22)
+
+[node name="Branch3" parent="." unique_id=1860012462 instance=ExtResource("6_kdubu")]
 position = Vector2(32, 39)
 
 [node name="Branch2" parent="." unique_id=1020929669 instance=ExtResource("6_kdubu")]
