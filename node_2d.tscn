@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d3jphtfxyroju" path="res://character_body_2d.gd" id="1_0e48y"]
 [ext_resource type="Texture2D" uid="uid://dgc38rx547xn3" path="res://brackeys_platformer_assets/sprites/knight.png" id="2_epypp"]
+[ext_resource type="Script" uid="uid://dwrftgk6nej7t" path="res://camera_2d.gd" id="3_d21ai"]
 [ext_resource type="Texture2D" uid="uid://bjh2hd4vddo4q" path="res://brackeys_platformer_assets/sprites/world_tileset.png" id="3_epypp"]
 [ext_resource type="Script" uid="uid://b3u8t3yptskd2" path="res://npc.gd" id="4_q6r6c"]
 [ext_resource type="Texture2D" uid="uid://yf14xtxxxky4" path="res://icon.svg" id="5_kdubu"]
@@ -323,6 +324,7 @@ shape = SubResource("RectangleShape2D_sc4of")
 position = Vector2(0, -28)
 limit_left = 0
 limit_bottom = 175
+script = ExtResource("3_d21ai")
 
 [node name="tiles" type="Node2D" parent="." unique_id=1802656392]
 position = Vector2(0, 1)

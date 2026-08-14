@@ -53,9 +53,9 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector2.ZERO # Congela al personaje
 		
 		# Cargar salto mientras estás en la rama
-		if Input.is_action_pressed("ui_down"):
+		if Input.is_action_pressed("charge_jump"):
 			jump_hold_time += delta
-		if Input.is_action_just_released("ui_down"):
+		if Input.is_action_just_released("charge_jump"):
 			jump_hold_time = 0.0
 		
 		# Cambiar color según el tiempo
@@ -81,7 +81,7 @@ func _physics_process(delta: float) -> void:
 			$Sprite2D.modulate = Color.WHITE
 			
 		# Soltarse sin saltar presionando abajo (si no estaba cargando salto)
-		if Input.is_action_just_released("ui_down") and jump_hold_time == 0.0:
+		if Input.is_action_just_released("charge_jump") and jump_hold_time == 0.0:
 			is_hanging = false
 			
 		move_and_slide()
@@ -92,9 +92,9 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_pressed("ui_down") and is_on_floor():
+	if Input.is_action_pressed("charge_jump") and is_on_floor():
 		jump_hold_time += delta
-	if Input.is_action_just_released("ui_down"):
+	if Input.is_action_just_released("charge_jump"):
 		jump_hold_time = 0.0
 	
 		# Cambiar color según el tiempo
