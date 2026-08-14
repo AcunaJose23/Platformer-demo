@@ -14,6 +14,9 @@ var friction = false
 #vars rama
 var is_hanging = false
 var active_branch : Node2D = null
+#jump buffering
+var jump_buffer_time = 0
+const JUMP_BUFFER_TIME = 0.1
 
 func _ready() -> void:
 	DialogueManager.dialogue_started.connect(_on_dialogue_started)
@@ -66,7 +69,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			$Sprite2D.modulate = Color.RED
 			
-		# SALTAR PARA SOLTARSE (¡Esto faltaba condicionarlo al botón!)
+		# SALTAR PARA SOLTARSE 
 		if Input.is_action_just_pressed("jump"):
 			is_hanging = false
 			
@@ -90,7 +93,12 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
+		
+	#buffer time
+	if jump_buffer_time > 0.0:
+		jump_buffer_time -= delta
+	if Input.is_action_just_pressed("jump"):
+		jump_buffer_time = JUMP_BUFFER_TIME
 	# Handle jump.
 	if Input.is_action_pressed("charge_jump") and is_on_floor():
 		jump_hold_time += delta
@@ -105,13 +113,14 @@ func _physics_process(delta: float) -> void:
 	else:
 		$Sprite2D.modulate = Color.RED
 
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if jump_buffer_time > 0.0 and is_on_floor():
 		if jump_hold_time < 2.0:
 			velocity.y = JUMP_VELOCITY
 		elif jump_hold_time < 4.0:
 			velocity.y = JUMP_VELOCITY * 1.3
 		else:
 			velocity.y = JUMP_VELOCITY * 1.5
+		jump_buffer_time = 0.0
 		jump_hold_time = 0.0
 		$Sprite2D.modulate = Color.WHITE
 	if jump_hold_time > 0.0:
