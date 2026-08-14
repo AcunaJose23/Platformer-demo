@@ -10,6 +10,9 @@ var dialogue_active = false
 var running = false
 var running_time = 0.0
 var friction = false
+#vars rama
+var is_hanging = false
+var active_branch : Node2D = null
 
 func _ready() -> void:
 	DialogueManager.dialogue_started.connect(_on_dialogue_started)
@@ -23,11 +26,66 @@ func _on_dialogue_started(_resource) -> void:
 
 func _on_dialogue_ended(_resource) -> void:
 	dialogue_active = false
+#funciones rama
+func set_active_branch(branch: Node2D):
+	active_branch = branch
+func remove_active_branch(branch: Node2D):
+	if active_branch == branch:
+		active_branch = null
 	#cant move while on dialogue
 func _physics_process(delta: float) -> void:
 	if dialogue_active:
 		velocity = Vector2.ZERO
 		return	
+	#logica rama
+	# 1. Agarrarse a la rama
+	if active_branch != null and Input.is_action_just_pressed("grab") and not is_hanging:
+		is_hanging = true
+		# Teletransporta al personaje exactamente a la posición de la rama.
+		# (Puedes sumar un Vector2 si quieres que quede más arriba o abajo. Ej: global_position = active_branch.global_position + Vector2(0, 10))
+		global_position = active_branch.global_position
+		velocity = Vector2.ZERO
+		jump_hold_time = 0.0 # Reiniciamos por si venía cargando salto
+
+	# 2. Comportamiento mientras está colgado
+	if is_hanging:
+		velocity = Vector2.ZERO # Congela al personaje
+		
+		# Cargar salto mientras estás en la rama
+		if Input.is_action_pressed("ui_down"):
+			jump_hold_time += delta
+		if Input.is_action_just_released("ui_down"):
+			jump_hold_time = 0.0
+		
+		# Cambiar color según el tiempo
+		if jump_hold_time < 2.0:
+			$Sprite2D.modulate = Color.WHITE
+		elif jump_hold_time < 4.0:
+			$Sprite2D.modulate = Color.YELLOW
+		else:
+			$Sprite2D.modulate = Color.RED
+			
+		# SALTAR PARA SOLTARSE (¡Esto faltaba condicionarlo al botón!)
+		if Input.is_action_just_pressed("jump"):
+			is_hanging = false
+			
+			if jump_hold_time < 2.0:
+				velocity.y = JUMP_VELOCITY
+			elif jump_hold_time < 4.0:
+				velocity.y = JUMP_VELOCITY * 1.3
+			else:
+				velocity.y = JUMP_VELOCITY * 1.5
+				
+			jump_hold_time = 0.0
+			$Sprite2D.modulate = Color.WHITE
+			
+		# Soltarse sin saltar presionando abajo (si no estaba cargando salto)
+		if Input.is_action_just_released("ui_down") and jump_hold_time == 0.0:
+			is_hanging = false
+			
+		move_and_slide()
+		return
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta

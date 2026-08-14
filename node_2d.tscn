@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bjh2hd4vddo4q" path="res://brackeys_platformer_assets/sprites/world_tileset.png" id="3_epypp"]
 [ext_resource type="Script" uid="uid://b3u8t3yptskd2" path="res://npc.gd" id="4_q6r6c"]
 [ext_resource type="Texture2D" uid="uid://yf14xtxxxky4" path="res://icon.svg" id="5_kdubu"]
+[ext_resource type="PackedScene" uid="uid://btl1luebu44p1" path="res://branch.tscn" id="6_kdubu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_epypp"]
 atlas = ExtResource("2_epypp")
@@ -322,6 +323,15 @@ collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="npc/Area2D" unique_id=531031768]
 shape = SubResource("CircleShape2D_sc4of")
+
+[node name="Branch3" parent="." unique_id=739586488 instance=ExtResource("6_kdubu")]
+position = Vector2(32, 39)
+
+[node name="Branch2" parent="." unique_id=1020929669 instance=ExtResource("6_kdubu")]
+position = Vector2(85, 61)
+
+[node name="Branch" parent="." unique_id=1385112389 instance=ExtResource("6_kdubu")]
+position = Vector2(49, 91)
 
 [connection signal="body_entered" from="npc/Area2D" to="npc" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="npc/Area2D" to="npc" method="_on_area_2d_body_exited"]
