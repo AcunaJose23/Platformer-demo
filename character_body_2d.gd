@@ -7,6 +7,7 @@ var speed = walk_speed
 const JUMP_VELOCITY = -300.0
 var jump_hold_time = 0.0
 var dialogue_active = false
+var idle_time = 0.0
 var running = false
 var running_time = 0.0
 var friction = false
@@ -131,11 +132,13 @@ func _physics_process(delta: float) -> void:
 			running = false
 		var direction := Input.get_axis("ui_left", "ui_right")
 		if direction and running == true:
+			idle_time = 0.0
 			velocity.x = direction * speed
 			running_time += delta
 			if running_time > 1.5:
 				friction = true
 		elif direction:
+			idle_time = 0.0
 			velocity.x = direction * speed
 			running_time = 0.0
 			friction = false
@@ -145,8 +148,11 @@ func _physics_process(delta: float) -> void:
 			else:
 				velocity.x = move_toward(velocity.x, 0, speed)
 		if velocity.x == 0:
+			idle_time += delta
 			running_time = 0.0
 			friction = false
+			if idle_time >= 3:
+				$Sprite2D.play("idle")
 		if direction != 0:
 			$Sprite2D.play("default")
 			if direction > 0:
