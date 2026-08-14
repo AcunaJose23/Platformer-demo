@@ -8,6 +8,7 @@ const JUMP_VELOCITY = -300.0
 var jump_hold_time = 0.0
 var dialogue_active = false
 var running = false
+var running_time = 0.0
 
 func _ready() -> void:
 	DialogueManager.dialogue_started.connect(_on_dialogue_started)
@@ -63,13 +64,18 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	#run input
-		if Input.is_action_just_pressed("run") and running == false:
+		if Input.is_action_pressed("run") and running == false:
 			speed = run_speed
 			running = true
 		elif Input.is_action_just_pressed("run") and running == true:
 			speed = walk_speed
 			running = false
 		var direction := Input.get_axis("ui_left", "ui_right")
+		if direction and running:
+			velocity.x = direction * speed
+			running_time += delta
+		if Input.is_action_just_released("ui_left") or Input.is_action_just_released("ui_right"):
+			running_time = 0.0
 		if direction:
 			velocity.x = direction * speed
 		if direction != 0:
@@ -80,7 +86,9 @@ func _physics_process(delta: float) -> void:
 				$Sprite2D.flip_h = true
 		elif running == false:
 			velocity.x = move_toward(velocity.x, 0, speed)
-		elif running == true:
+		elif running == true and running_time > 1.5:
 			velocity.x = move_toward(velocity.x, 0, 7)
+		elif running == true:
+			velocity.x = move_toward(velocity.x, 0, speed)
 
 	move_and_slide()
