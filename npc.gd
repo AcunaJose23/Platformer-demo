@@ -10,7 +10,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
 		player_near = false
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if player_near and Input.is_action_just_pressed("talk"):
 		DialogueManager.show_dialogue_balloon(load("res://Try.dialogue"), "start")
 	
