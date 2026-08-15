@@ -1,8 +1,9 @@
 ~ start
-Nathan: Hi [[vara|bot|bananin]], this is some dialogue.
-Nathan: Here are some choices.
-- First one
-	Nathan: You picked the first one.
+Ian: Hola [[La vara|bot|bananin]], tenes que chabear
+- No
+	Ian: No me importa
+	do Global.cambiar_nivel("res://Levels/Lvl1.tscn")
+	=> END
 - Second one
 	Nathan: You picked the second one.
 - Start again => start
