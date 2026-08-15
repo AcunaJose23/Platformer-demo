@@ -164,7 +164,10 @@ func _physics_process(delta: float) -> void:
 			friction = false
 			
 		if direction != 0:
-			$Sprite2D.play("default")
+			if running:
+				$Sprite2D.play("Run")
+			else:
+				$Sprite2D.play("default")
 			if direction > 0:
 				$Sprite2D.flip_h = false
 			if direction < 0:
@@ -173,6 +176,7 @@ func _physics_process(delta: float) -> void:
 	# Idle animation
 	if is_on_floor() and velocity.x == 0 and not is_hanging:
 		idle_time += delta
+		$Sprite2D.play("idle")
 		if idle_time >= 3.0:
 			$Sprite2D.play("idle")
 	else:
