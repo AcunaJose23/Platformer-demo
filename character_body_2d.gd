@@ -185,4 +185,5 @@ func _process(delta: float) -> void:
 	
 	# --- OPCIÓN 1: Solo segundos (Ej: "Tiempo: 15") ---
 	# Usamos int() para borrar los decimales
-	$CanvasLayer/Label.text = "Time: " + str(int(time_elapsed))
+	$CanvasLayer/Time.text = "Time: " + str(int(time_elapsed))
+	$CanvasLayer/Coins.text = "Coins: " + str(int(Global.monedas))
