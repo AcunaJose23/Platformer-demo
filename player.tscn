@@ -1,27 +1,27 @@
 [gd_scene format=3 uid="uid://gig0yllii8dk"]
 
 [ext_resource type="Script" uid="uid://d3jphtfxyroju" path="res://character_body_2d.gd" id="1_i3pqv"]
-[ext_resource type="Texture2D" uid="uid://cvsc3ovjckup6" path="res://Sprites Plat/Correr_lol.png" id="2_2hs0m"]
 [ext_resource type="Texture2D" uid="uid://6hndh4mb0p5o" path="res://Sprites Plat/Caminar2222.png" id="2_sweqy"]
+[ext_resource type="Texture2D" uid="uid://ca250pw7nlnsn" path="res://brackeys_platformer_assets/sprites/Correr lol.png" id="3_1jxqw"]
 [ext_resource type="Texture2D" uid="uid://eaey46fu66nf" path="res://Sprites Plat/Idle_real.png" id="3_2hs0m"]
 [ext_resource type="Script" uid="uid://dwrftgk6nej7t" path="res://camera_2d.gd" id="3_sweqy"]
 [ext_resource type="FontFile" uid="uid://5ux76ui51big" path="res://Minecraft.ttf" id="4_hqtel"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u1c27"]
-atlas = ExtResource("2_2hs0m")
-region = Rect2(0, 0, 202, 302)
+atlas = ExtResource("3_1jxqw")
+region = Rect2(302, 0, 302, 452)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_op7ga"]
-atlas = ExtResource("2_2hs0m")
-region = Rect2(202, 0, 202, 302)
+atlas = ExtResource("3_1jxqw")
+region = Rect2(0, 452, 302, 452)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q13i1"]
-atlas = ExtResource("2_2hs0m")
-region = Rect2(404, 0, 202, 302)
+atlas = ExtResource("3_1jxqw")
+region = Rect2(0, 0, 302, 452)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pylmc"]
-atlas = ExtResource("2_2hs0m")
-region = Rect2(0, 302, 202, 302)
+atlas = ExtResource("3_1jxqw")
+region = Rect2(604, 0, 302, 452)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2hs0m"]
 atlas = ExtResource("2_sweqy")
@@ -138,13 +138,13 @@ z_index = 1
 script = ExtResource("1_i3pqv")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1706365746]
-position = Vector2(0, 3)
-scale = Vector2(0.1, 0.1)
+position = Vector2(-2.05, 0.20000005)
+scale = Vector2(0.08642384, 0.087610625)
 sprite_frames = SubResource("SpriteFrames_nqvpf")
 animation = &"Run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=839086912]
-position = Vector2(-0.5, 3)
+position = Vector2(-4, 3)
 shape = SubResource("CapsuleShape2D_eanf6")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1234578599]
