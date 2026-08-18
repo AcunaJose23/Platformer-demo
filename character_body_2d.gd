@@ -159,6 +159,9 @@ func _physics_process(delta: float) -> void:
 			running = false
 			
 		var direction := Input.get_axis("ui_left", "ui_right")
+		
+		if Input.is_action_pressed("look_up") or Input.is_action_pressed("look_down"):
+			direction = 0
 		if direction and running == true:
 			velocity.x = direction * speed
 			running_time += delta
