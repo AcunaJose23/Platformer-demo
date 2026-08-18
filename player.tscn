@@ -1,11 +1,37 @@
 [gd_scene format=3 uid="uid://gig0yllii8dk"]
 
 [ext_resource type="Script" uid="uid://d3jphtfxyroju" path="res://character_body_2d.gd" id="1_i3pqv"]
+[ext_resource type="Texture2D" uid="uid://dlotul3xs1d3m" path="res://Sprites Plat/Jump.png" id="2_1jxqw"]
 [ext_resource type="Texture2D" uid="uid://6hndh4mb0p5o" path="res://Sprites Plat/Caminar2222.png" id="2_sweqy"]
 [ext_resource type="Texture2D" uid="uid://ca250pw7nlnsn" path="res://brackeys_platformer_assets/sprites/Correr lol.png" id="3_1jxqw"]
 [ext_resource type="Texture2D" uid="uid://eaey46fu66nf" path="res://Sprites Plat/Idle_real.png" id="3_2hs0m"]
 [ext_resource type="Script" uid="uid://dwrftgk6nej7t" path="res://camera_2d.gd" id="3_sweqy"]
 [ext_resource type="FontFile" uid="uid://5ux76ui51big" path="res://Minecraft.ttf" id="4_hqtel"]
+[ext_resource type="Texture2D" uid="uid://vgphgt3vxhvn" path="res://brackeys_platformer_assets/sprites/Heart.png" id="8_dw050"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbfsw"]
+atlas = ExtResource("2_1jxqw")
+region = Rect2(0, 0, 202, 302)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5tmop"]
+atlas = ExtResource("2_1jxqw")
+region = Rect2(202, 0, 202, 302)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ahtn"]
+atlas = ExtResource("2_1jxqw")
+region = Rect2(404, 0, 202, 302)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7lmhl"]
+atlas = ExtResource("2_1jxqw")
+region = Rect2(0, 302, 202, 302)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dx0e4"]
+atlas = ExtResource("2_1jxqw")
+region = Rect2(202, 302, 202, 302)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jm5j8"]
+atlas = ExtResource("2_1jxqw")
+region = Rect2(404, 302, 202, 302)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u1c27"]
 atlas = ExtResource("3_1jxqw")
@@ -22,6 +48,10 @@ region = Rect2(0, 0, 302, 452)
 [sub_resource type="AtlasTexture" id="AtlasTexture_pylmc"]
 atlas = ExtResource("3_1jxqw")
 region = Rect2(604, 0, 302, 452)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hik5"]
+atlas = ExtResource("2_1jxqw")
+region = Rect2(404, 302, 202, 302)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2hs0m"]
 atlas = ExtResource("2_sweqy")
@@ -67,6 +97,29 @@ region = Rect2(171, 0, 171, 302)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_pbfsw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5tmop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ahtn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7lmhl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dx0e4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jm5j8")
+}],
+"loop": 1,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_u1c27")
 }, {
 "duration": 1.0,
@@ -80,6 +133,14 @@ animations = [{
 }],
 "loop": 1,
 "name": &"Run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hik5")
+}],
+"loop": 1,
+"name": &"air_up",
 "speed": 5.0
 }, {
 "frames": [{
@@ -125,7 +186,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eanf6"]
 radius = 5.5
-height = 28.0
+height = 26.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_sweqy"]
 font = ExtResource("4_hqtel")
@@ -141,10 +202,10 @@ script = ExtResource("1_i3pqv")
 position = Vector2(-2.05, 0.20000005)
 scale = Vector2(0.08642384, 0.087610625)
 sprite_frames = SubResource("SpriteFrames_nqvpf")
-animation = &"Run"
+animation = &"air_up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=839086912]
-position = Vector2(-4, 3)
+position = Vector2(-2, 1)
 shape = SubResource("CapsuleShape2D_eanf6")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1234578599]
@@ -176,3 +237,24 @@ offset_bottom = 48.0
 theme_override_font_sizes/font_size = 9
 label_settings = SubResource("LabelSettings_sweqy")
 metadata/_edit_use_anchors_ = true
+
+[node name="Health" type="HBoxContainer" parent="CanvasLayer" unique_id=1616217162]
+offset_left = 13.0
+offset_top = 14.0
+offset_right = 24.0
+offset_bottom = 25.0
+
+[node name="Heart" type="TextureRect" parent="CanvasLayer/Health" unique_id=654120704]
+layout_mode = 2
+texture = ExtResource("8_dw050")
+expand_mode = 2
+
+[node name="Heart2" type="TextureRect" parent="CanvasLayer/Health" unique_id=1322078295]
+layout_mode = 2
+texture = ExtResource("8_dw050")
+expand_mode = 2
+
+[node name="Heart3" type="TextureRect" parent="CanvasLayer/Health" unique_id=718017337]
+layout_mode = 2
+texture = ExtResource("8_dw050")
+expand_mode = 2

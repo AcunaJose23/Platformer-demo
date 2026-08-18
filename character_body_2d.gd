@@ -20,7 +20,14 @@ var active_branch : Node2D = null
 var jump_buffer_time: float = 0.0
 const JUMP_BUFFER_TIME = 0.1
 
+#vida
+var health = 3
+
+#aparecer
+var aparecer: Vector2
+
 func _ready() -> void:
+	aparecer = global_position
 	DialogueManager.dialogue_started.connect(_on_dialogue_started)
 	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 
@@ -104,16 +111,22 @@ func _physics_process(delta: float) -> void:
 	# Handle jump charge on floor.
 	if Input.is_action_pressed("charge_jump") and is_on_floor():
 		jump_hold_time += delta
+		$Sprite2D.animation = "Jump"
+		$Sprite2D.stop()
 	if Input.is_action_just_released("charge_jump"):
 		jump_hold_time = 0.0
 	
 	# Cambiar color según el tiempo
-	if jump_hold_time < 2.0:
-		$Sprite2D.modulate = Color.WHITE
-	elif jump_hold_time < 4.0:
-		$Sprite2D.modulate = Color.YELLOW
-	else:
-		$Sprite2D.modulate = Color.RED
+	if jump_hold_time > 0.0:
+		if jump_hold_time < 2.0:
+			$Sprite2D.frame = 0
+			$Sprite2D.modulate = Color.WHITE
+		elif jump_hold_time < 4.0:
+			$Sprite2D.frame = 1
+			$Sprite2D.modulate = Color.YELLOW
+		else:
+			$Sprite2D.frame = 2
+			$Sprite2D.modulate = Color.RED
 
 	# Execute jump buffer
 	if jump_buffer_time > 0.0 and is_on_floor():
@@ -136,10 +149,10 @@ func _physics_process(delta: float) -> void:
 			$Sprite2D.flip_h = true
 	else:
 		#run input
-		if Input.is_action_just_pressed("run") and running == false:
+		if Input.is_action_pressed("run") and running == false:
 			speed = run_speed
 			running = true
-		elif Input.is_action_just_pressed("run") and running == true:
+		elif Input.is_action_just_released("run") and running == true:
 			speed = walk_speed
 			running = false
 			
@@ -174,7 +187,7 @@ func _physics_process(delta: float) -> void:
 				$Sprite2D.flip_h = true
 				
 	# Idle animation
-	if is_on_floor() and velocity.x == 0 and not is_hanging:
+	if is_on_floor() and velocity.x == 0 and not is_hanging and jump_hold_time == 0:
 		idle_time += delta
 		$Sprite2D.play("idle")
 		if idle_time >= 3.0:
@@ -182,6 +195,19 @@ func _physics_process(delta: float) -> void:
 	else:
 		idle_time = 0.0
 
+	if not is_on_floor() and not is_hanging:
+		
+		# 1. ORIENTACIÓN (Izquierda o Derecha)
+		if velocity.x > 0:
+			$Sprite2D.flip_h = false # Mirar a la derecha
+		elif velocity.x < 0:
+			$Sprite2D.flip_h = true  # Mirar a la izquierda
+			
+		# 2. ANIMACIÓN (Subiendo o Cayendo)
+		if velocity.y < 0:
+			$Sprite2D.play("air_up") # Yendo hacia arriba
+		else:
+			$Sprite2D.play("air_up")
 	move_and_slide()
 	
 func _process(delta: float) -> void:
@@ -191,3 +217,20 @@ func _process(delta: float) -> void:
 	# Usamos int() para borrar los decimales
 	$CanvasLayer/Time.text = "Time: " + str(int(time_elapsed))
 	$CanvasLayer/Coins.text = "Coins: " + str(int(Global.monedas))
+	
+	#No se, ver vidas (La vara omg)
+	$CanvasLayer/Health/Heart.visible = health >= 1
+	$CanvasLayer/Health/Heart2.visible = health >= 2
+	$CanvasLayer/Health/Heart3.visible = health >= 3
+	
+func lose_health() -> void:
+	health -= 1
+	if health <= 0:
+		morir()
+func morir() -> void:
+	time_elapsed = 0
+	Global.monedas = 0
+	get_tree().call_deferred("reload_current_scene")
+func reaparecer() -> void:
+	global_position = aparecer
+	velocity = Vector2.ZERO
