@@ -127,6 +127,8 @@ func _physics_process(delta: float) -> void:
 		else:
 			$Sprite2D.frame = 2
 			$Sprite2D.modulate = Color.RED
+	else:
+		$Sprite2D.modulate = Color.WHITE
 
 	# Execute jump buffer
 	if jump_buffer_time > 0.0 and is_on_floor():
