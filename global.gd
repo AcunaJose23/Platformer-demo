@@ -22,7 +22,6 @@ func calcular_puntaje(tiempo_del_jugador: float) -> void:
 	print("Puntaje Total Guardado: ", puntaje_total)
 
 func cambiar_nivel(ruta_escena: String) -> void:
-	monedas = 0
 	get_tree().change_scene_to_file(ruta_escena)
 
 # En el futuro, llamarás a esta función cuando el jugador salga 

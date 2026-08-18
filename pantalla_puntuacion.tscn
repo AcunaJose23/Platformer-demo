@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://dnnlkaq3dfv1h"]
+
+[ext_resource type="Script" uid="uid://cra06kngal321" path="res://pantalla_puntuacion.gd" id="1_pbi0l"]
+
+[node name="PantallaPuntuacion" type="Control" unique_id=1099116906]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pbi0l")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1592881720]
+layout_mode = 0
+offset_right = 387.0
+offset_bottom = 180.0
+color = Color(1, 1, 0.45490196, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1704145208]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Titulo" type="Label" parent="VBoxContainer" unique_id=1592557893]
+layout_mode = 2
+
+[node name="PuntajeText" type="Label" parent="VBoxContainer" unique_id=989780026]
+layout_mode = 2
+
+[node name="MonedasText" type="Label" parent="VBoxContainer" unique_id=1682434499]
+layout_mode = 2
+
+[node name="TiempoText" type="Label" parent="VBoxContainer" unique_id=631760029]
+layout_mode = 2
+
+[node name="BotonSiguiente" type="Button" parent="VBoxContainer" unique_id=1176199107]
+layout_mode = 2
+text = "Siguiente Nivel"
+
+[connection signal="pressed" from="VBoxContainer/BotonSiguiente" to="." method="_on_boton_siguiente_pressed"]

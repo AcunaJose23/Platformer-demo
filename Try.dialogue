@@ -2,7 +2,7 @@
 Ian: Hola [[La vara|bot|bananin]], tenes que chabear
 - No
 	Ian: No me importa
-	do Global.cambiar_nivel("res://Levels/Lvl1.tscn")
+	do Global.cambiar_nivel("res://pantalla_puntuacion.tscn")
 	=> END
 - Second one
 	Nathan: You picked the second one.
