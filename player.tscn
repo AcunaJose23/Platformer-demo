@@ -158,7 +158,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eanf6"]
 radius = 5.5
-height = 26.0
+height = 34.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_sweqy"]
 font = ExtResource("4_hqtel")

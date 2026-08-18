@@ -26,10 +26,17 @@ var health = 3
 #aparecer
 var aparecer: Vector2
 
+#contrareloj
+@export var es_contrareloj: bool = false
+@export var tiempo_maximo: float = 10.0
+
 func _ready() -> void:
 	aparecer = global_position
 	DialogueManager.dialogue_started.connect(_on_dialogue_started)
 	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
+
+	if es_contrareloj:
+		time_elapsed = tiempo_maximo
 
 func _on_dialogue_started(_resource) -> void:
 	dialogue_active = true
@@ -216,7 +223,13 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 func _process(delta: float) -> void:
-	time_elapsed += delta
+	if es_contrareloj:
+		time_elapsed -= delta
+		if time_elapsed <= 0:
+			time_elapsed = 0
+			morir()
+	else:
+		time_elapsed += delta
 	
 	# --- OPCIÓN 1: Solo segundos (Ej: "Tiempo: 15") ---
 	# Usamos int() para borrar los decimales
@@ -224,9 +237,9 @@ func _process(delta: float) -> void:
 	$CanvasLayer/Coins.text = "Coins: " + str(int(Global.monedas))
 	
 	#No se, ver vidas (La vara omg)
-	$CanvasLayer/Health/Heart.visible = health >= 1
-	$CanvasLayer/Health/Heart2.visible = health >= 2
-	$CanvasLayer/Health/Heart3.visible = health >= 3
+	$CanvasLayer/Health/Heart.visible = health >= 0.5
+	$CanvasLayer/Health/Heart2.visible = health >= 1.5
+	$CanvasLayer/Health/Heart3.visible = health >= 2.5
 	
 func lose_health() -> void:
 	health -= 0.5
