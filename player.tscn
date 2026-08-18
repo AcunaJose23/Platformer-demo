@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://d3jphtfxyroju" path="res://character_body_2d.gd" id="1_i3pqv"]
 [ext_resource type="Texture2D" uid="uid://dlotul3xs1d3m" path="res://Sprites Plat/Jump.png" id="2_1jxqw"]
-[ext_resource type="Texture2D" uid="uid://6hndh4mb0p5o" path="res://Sprites Plat/Caminar2222.png" id="2_sweqy"]
 [ext_resource type="Texture2D" uid="uid://ca250pw7nlnsn" path="res://brackeys_platformer_assets/sprites/Correr lol.png" id="3_1jxqw"]
 [ext_resource type="Texture2D" uid="uid://eaey46fu66nf" path="res://Sprites Plat/Idle_real.png" id="3_2hs0m"]
 [ext_resource type="Script" uid="uid://dwrftgk6nej7t" path="res://camera_2d.gd" id="3_sweqy"]
+[ext_resource type="Texture2D" uid="uid://dyvfxooojfsl8" path="res://brackeys_platformer_assets/sprites/Caminar (2222.png" id="4_dw050"]
 [ext_resource type="FontFile" uid="uid://5ux76ui51big" path="res://Minecraft.ttf" id="4_hqtel"]
 [ext_resource type="Texture2D" uid="uid://vgphgt3vxhvn" path="res://brackeys_platformer_assets/sprites/Heart.png" id="8_dw050"]
 
@@ -53,37 +53,21 @@ region = Rect2(604, 0, 302, 452)
 atlas = ExtResource("2_1jxqw")
 region = Rect2(404, 302, 202, 302)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2hs0m"]
-atlas = ExtResource("2_sweqy")
-region = Rect2(0, 0, 202, 302)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1jxqw"]
-atlas = ExtResource("2_sweqy")
-region = Rect2(202, 0, 202, 302)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_dw050"]
-atlas = ExtResource("2_sweqy")
-region = Rect2(404, 0, 202, 302)
+atlas = ExtResource("4_dw050")
+region = Rect2(302, 0, 302, 452)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b26j0"]
-atlas = ExtResource("2_sweqy")
-region = Rect2(606, 0, 202, 302)
+atlas = ExtResource("4_dw050")
+region = Rect2(604, 0, 302, 452)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n7ghd"]
-atlas = ExtResource("2_sweqy")
-region = Rect2(0, 302, 202, 302)
+atlas = ExtResource("4_dw050")
+region = Rect2(0, 0, 302, 452)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nvl01"]
-atlas = ExtResource("2_sweqy")
-region = Rect2(202, 302, 202, 302)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ivps1"]
-atlas = ExtResource("2_sweqy")
-region = Rect2(404, 302, 202, 302)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_urp6f"]
-atlas = ExtResource("2_sweqy")
-region = Rect2(606, 302, 202, 302)
+atlas = ExtResource("4_dw050")
+region = Rect2(604, 452, 302, 452)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bwjto"]
 atlas = ExtResource("3_2hs0m")
@@ -145,12 +129,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2hs0m")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1jxqw")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_dw050")
 }, {
 "duration": 1.0,
@@ -161,12 +139,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nvl01")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ivps1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_urp6f")
 }],
 "loop": 1,
 "name": &"default",
@@ -202,7 +174,6 @@ script = ExtResource("1_i3pqv")
 position = Vector2(-2.05, 0.20000005)
 scale = Vector2(0.08642384, 0.087610625)
 sprite_frames = SubResource("SpriteFrames_nqvpf")
-animation = &"air_up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=839086912]
 position = Vector2(-2, 1)

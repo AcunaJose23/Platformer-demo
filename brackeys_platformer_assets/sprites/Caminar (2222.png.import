@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brftakw5eyby"
-path="res://.godot/imported/Caminar(2222.png-20de62019ebb908d5e6bb21e54849ec7.ctex"
+uid="uid://dyvfxooojfsl8"
+path="res://.godot/imported/Caminar (2222.png-085d7b323c1ec93d9cfb8ebf4409ed1a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://brackeys_platformer_assets/sprites/Caminar(2222.png"
-dest_files=["res://.godot/imported/Caminar(2222.png-20de62019ebb908d5e6bb21e54849ec7.ctex"]
+source_file="res://brackeys_platformer_assets/sprites/Caminar (2222.png"
+dest_files=["res://.godot/imported/Caminar (2222.png-085d7b323c1ec93d9cfb8ebf4409ed1a.ctex"]
 
 [params]
 
