@@ -229,7 +229,7 @@ func _process(delta: float) -> void:
 	$CanvasLayer/Health/Heart3.visible = health >= 3
 	
 func lose_health() -> void:
-	health -= 1
+	health -= 0.5
 	if health <= 0:
 		morir()
 func morir() -> void:
