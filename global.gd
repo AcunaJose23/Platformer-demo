@@ -9,7 +9,7 @@ func calcular_puntaje(tiempo_del_jugador: float) -> void:
 	tiempo_final = int(tiempo_del_jugador)
 	
 	var puntos_por_monedas = monedas * 50
-	var penalizacion_tiempo = tiempo_final * 1
+	var penalizacion_tiempo = tiempo_final * 3
 	
 	puntaje_total = puntos_por_monedas - penalizacion_tiempo
 	
