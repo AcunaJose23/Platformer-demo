@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://btcaeqiocpc6x"]
+
+[ext_resource type="Script" uid="uid://d1bvtlrjjh2wo" path="res://enemigo.gd" id="1_a5tj2"]
+[ext_resource type="Texture2D" uid="uid://dncjbluhakkn7" path="res://Sprites Plat/Enemigo.jpg" id="2_moxti"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sc4of"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_moxti")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbfu8"]
+size = Vector2(24, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nqvpf"]
+size = Vector2(176, 32)
+
+[node name="Enemigo" type="CharacterBody2D" unique_id=739244623]
+script = ExtResource("1_a5tj2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1096376433]
+scale = Vector2(0.02, 0.02)
+sprite_frames = SubResource("SpriteFrames_sc4of")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=701978032]
+shape = SubResource("RectangleShape2D_tbfu8")
+
+[node name="ZonaVision" type="Area2D" parent="." unique_id=1153065345]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaVision" unique_id=988076075]
+shape = SubResource("RectangleShape2D_nqvpf")
+
+[connection signal="body_entered" from="ZonaVision" to="." method="_on_zona_vision_body_entered"]
+[connection signal="body_exited" from="ZonaVision" to="." method="_on_zona_vision_body_exited"]
