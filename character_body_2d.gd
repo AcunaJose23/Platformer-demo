@@ -28,7 +28,7 @@ var aparecer: Vector2
 
 #contrareloj
 @export var es_contrareloj: bool = false
-@export var tiempo_maximo: float = 10.0
+@export var tiempo_maximo: float = 120.0
 
 func _ready() -> void:
 	aparecer = global_position
