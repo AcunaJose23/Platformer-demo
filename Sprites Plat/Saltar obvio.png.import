@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://eaey46fu66nf"
-path="res://.godot/imported/Idle_real.png-d0fa25811266b7e4fcdf168c671be4ed.ctex"
+uid="uid://btrg5y64j6byv"
+path="res://.godot/imported/Saltar obvio.png-3a9b1046474f90fc2bd7d520c1e63568.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites Plat/Idle_real.png"
-dest_files=["res://.godot/imported/Idle_real.png-d0fa25811266b7e4fcdf168c671be4ed.ctex"]
+source_file="res://Sprites Plat/Saltar obvio.png"
+dest_files=["res://.godot/imported/Saltar obvio.png-3a9b1046474f90fc2bd7d520c1e63568.ctex"]
 
 [params]
 
