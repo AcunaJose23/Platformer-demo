@@ -22,6 +22,7 @@ const JUMP_BUFFER_TIME = 0.1
 
 #vida
 var health = 3
+var tiempo_daño = 0.0
 
 #aparecer
 var aparecer: Vector2
@@ -124,18 +125,22 @@ func _physics_process(delta: float) -> void:
 		jump_hold_time = 0.0
 	
 	# Cambiar color según el tiempo
-	if jump_hold_time > 0.0:
-		if jump_hold_time < 2.0:
-			$Sprite2D.frame = 0
-			$Sprite2D.modulate = Color.WHITE
-		elif jump_hold_time < 4.0:
-			$Sprite2D.frame = 1
-			$Sprite2D.modulate = Color.YELLOW
-		else:
-			$Sprite2D.frame = 2
-			$Sprite2D.modulate = Color.RED
+	if tiempo_daño > 0.0:
+		tiempo_daño -= delta
+		$Sprite2D.modulate = Color.RED
 	else:
-		$Sprite2D.modulate = Color.WHITE
+		if jump_hold_time > 0.0:
+			if jump_hold_time < 2.0:
+				$Sprite2D.frame = 0
+				$Sprite2D.modulate = Color.WHITE
+			elif jump_hold_time < 4.0:
+				$Sprite2D.frame = 1
+				$Sprite2D.modulate = Color.YELLOW
+			else:
+				$Sprite2D.frame = 2
+				$Sprite2D.modulate = Color.RED
+		else:
+			$Sprite2D.modulate = Color.WHITE
 
 	# Execute jump buffer
 	if jump_buffer_time > 0.0 and is_on_floor():
@@ -242,6 +247,7 @@ func _process(delta: float) -> void:
 	$CanvasLayer/Health/Heart3.visible = health >= 2.5
 	
 func lose_health() -> void:
+	tiempo_daño = 0.2
 	health -= 0.5
 	if health <= 0:
 		morir()

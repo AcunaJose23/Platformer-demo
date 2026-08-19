@@ -17,6 +17,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tbfu8"]
 size = Vector2(24, 32)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qjdjv"]
+size = Vector2(26, 34)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nqvpf"]
 size = Vector2(133, 32)
 
@@ -31,11 +34,18 @@ sprite_frames = SubResource("SpriteFrames_sc4of")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=701978032]
 shape = SubResource("RectangleShape2D_tbfu8")
 
+[node name="Daño" type="Area2D" parent="." unique_id=1544749391]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Daño" unique_id=375295272]
+shape = SubResource("RectangleShape2D_qjdjv")
+
 [node name="ZonaVision" type="Area2D" parent="." unique_id=1153065345]
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaVision" unique_id=988076075]
 shape = SubResource("RectangleShape2D_nqvpf")
 
+[connection signal="body_entered" from="Daño" to="." method="_on_daño_body_entered"]
 [connection signal="body_entered" from="ZonaVision" to="." method="_on_zona_vision_body_entered"]
 [connection signal="body_exited" from="ZonaVision" to="." method="_on_zona_vision_body_exited"]
