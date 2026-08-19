@@ -59,19 +59,19 @@ region = Rect2(604, 452, 302, 452)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ivps1"]
 atlas = ExtResource("5_dw050")
-region = Rect2(0, 0, 302, 452)
+region = Rect2(0, 0, 333, 499)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_urp6f"]
 atlas = ExtResource("5_dw050")
-region = Rect2(302, 0, 302, 452)
+region = Rect2(333, 0, 333, 499)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bwjto"]
 atlas = ExtResource("5_dw050")
-region = Rect2(604, 0, 302, 452)
+region = Rect2(666, 0, 333, 499)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_606se"]
 atlas = ExtResource("5_dw050")
-region = Rect2(0, 452, 302, 452)
+region = Rect2(0, 499, 333, 499)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nqvpf"]
 animations = [{
@@ -132,16 +132,16 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 3.4,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ivps1")
 }, {
-"duration": 2.68,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_urp6f")
 }, {
-"duration": 2.62,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_bwjto")
 }, {
-"duration": 0.4,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_606se")
 }],
 "loop": 1,
@@ -161,15 +161,14 @@ outline_color = Color(0, 0, 0, 1)
 
 [node name="Player" type="CharacterBody2D" unique_id=709236726]
 z_index = 1
+collision_layer = 2
 script = ExtResource("1_i3pqv")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1706365746]
 position = Vector2(-2.05, 0.20000005)
 scale = Vector2(0.08642384, 0.087610625)
 sprite_frames = SubResource("SpriteFrames_nqvpf")
-animation = &"Jump"
-autoplay = "idle"
-frame_progress = 0.17331523
+animation = &"air_up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=839086912]
 position = Vector2(-2, 1)

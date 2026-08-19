@@ -2,14 +2,13 @@ extends CharacterBody2D
 
 # --- CONFIGURACIÓN DE VELOCIDADES ---
 var speed_patrulla = 50.0
-var speed_persecucion = 120.0
+var speed_embestida = 120.0 
 
-# --- VARIABLES DE PERSECUCIÓN ---
-var persiguiendo = false
-var objetivo : Node2D = null
+# --- VARIABLES DE EMBESTIDA ---
+var embistiendo = false
+var direccion_embestida = 0 # Guardará 1 (derecha) o -1 (izquierda)
 
 # --- VARIABLES DE PATRULLA ---
-# @export nos deja elegir los nodos desde el panel Inspector
 @export var punto_izquierdo: Marker2D
 @export var punto_derecho: Marker2D
 var destino_actual: Marker2D
@@ -24,17 +23,17 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# 2. EL CEREBRO: Decidir qué hacer
-	if persiguiendo and objetivo != null:
+	if embistiendo:
 		# ==============================
-		#       MODO PERSECUCIÓN
+		#       MODO EMBESTIDA
 		# ==============================
-		var direccion = sign(objetivo.global_position.x - global_position.x)
-		velocity.x = direccion * speed_persecucion
+		# Corremos usando la dirección que guardamos ciegamente
+		velocity.x = direccion_embestida * speed_embestida
 		
-		# Voltear Sprite al perseguir
-		if direccion > 0:
+		# Voltear Sprite al embestir
+		if direccion_embestida > 0:
 			$AnimatedSprite2D.flip_h = false
-		elif direccion < 0:
+		elif direccion_embestida < 0:
 			$AnimatedSprite2D.flip_h = true
 
 	else:
@@ -66,18 +65,26 @@ func _physics_process(delta: float) -> void:
 	# 3. Aplicar el movimiento
 	move_and_slide()
 
+
 # ==============================
 #      SEÑALES DE VISIÓN
 # ==============================
 
-# Cuando el Player entra a la zona (Lo ve)
+# Cuando el Player entra a la zona de visión grande (Lo ve y activa la trampa)
 func _on_zona_vision_body_entered(body: Node2D) -> void:
-	if body.name == "Player":
-		persiguiendo = true
-		objetivo = body
+	if body.name == "Player" and not embistiendo:
+		embistiendo = true
+		
+		# Guardamos si el Player está a la derecha (1) o izquierda (-1) en ese milisegundo
+		direccion_embestida = sign(body.global_position.x - global_position.x)
+		
+		# Por si están exactamente en el mismo pixel
+		if direccion_embestida == 0:
+			direccion_embestida = 1
+			
+		print("¡Embestida activada hacia: ", direccion_embestida, "!")
 
-# Cuando el Player sale de la zona (Se escapa)
-func _on_zona_vision_body_exited(body: Node2D) -> void:
-	if body.name == "Player":
-		persiguiendo = false
-		objetivo = null
+# Cuando el Player sale de la zona de visión grande
+func _on_zona_vision_body_exited(_body: Node2D) -> void:
+	# Lo dejamos vacío con 'pass'. Así NUNCA dejará de correr hasta caer al vacío.
+	pass

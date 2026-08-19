@@ -18,9 +18,10 @@ animations = [{
 size = Vector2(24, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nqvpf"]
-size = Vector2(176, 32)
+size = Vector2(133, 32)
 
 [node name="Enemigo" type="CharacterBody2D" unique_id=739244623]
+collision_layer = 4
 script = ExtResource("1_a5tj2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1096376433]
@@ -31,6 +32,7 @@ sprite_frames = SubResource("SpriteFrames_sc4of")
 shape = SubResource("RectangleShape2D_tbfu8")
 
 [node name="ZonaVision" type="Area2D" parent="." unique_id=1153065345]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaVision" unique_id=988076075]
 shape = SubResource("RectangleShape2D_nqvpf")
