@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://510m2kj2rc6s"]
+
+[ext_resource type="Texture2D" uid="uid://bjh2hd4vddo4q" path="res://brackeys_platformer_assets/sprites/world_tileset.png" id="1_fee38"]
+[ext_resource type="Script" uid="uid://dx4htg1ixg6t0" path="res://pared_rompible.gd" id="1_ycrjp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sc4of"]
+size = Vector2(16, 16)
+
+[node name="ParedRompible" type="StaticBody2D" unique_id=667806858]
+script = ExtResource("1_ycrjp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=363173851]
+texture = ExtResource("1_fee38")
+region_enabled = true
+region_rect = Rect2(16, 0, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=123153496]
+visible = false
+shape = SubResource("RectangleShape2D_sc4of")

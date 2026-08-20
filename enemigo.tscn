@@ -23,6 +23,9 @@ size = Vector2(22, 30)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nqvpf"]
 size = Vector2(133, 32)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sc4of"]
+size = Vector2(26, 34)
+
 [node name="Enemigo" type="CharacterBody2D" unique_id=739244623]
 collision_layer = 4
 script = ExtResource("1_a5tj2")
@@ -46,6 +49,12 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaVision" unique_id=988076075]
 shape = SubResource("RectangleShape2D_nqvpf")
 
+[node name="AreaDestruccion" type="Area2D" parent="." unique_id=813550154]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDestruccion" unique_id=1044853808]
+shape = SubResource("RectangleShape2D_sc4of")
+
 [connection signal="body_entered" from="Daño" to="." method="_on_daño_body_entered"]
 [connection signal="body_entered" from="ZonaVision" to="." method="_on_zona_vision_body_entered"]
 [connection signal="body_exited" from="ZonaVision" to="." method="_on_zona_vision_body_exited"]
+[connection signal="body_entered" from="AreaDestruccion" to="." method="_on_area_destruccion_body_entered"]
