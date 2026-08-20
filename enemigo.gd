@@ -95,4 +95,4 @@ func _on_zona_vision_body_exited(_body: Node2D) -> void:
 
 func _on_daño_body_entered(body: Node2D) -> void:
 	if  body.name == "Player":
-		body.lose_health()
+		body.lose_health(global_position.x)

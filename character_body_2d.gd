@@ -174,6 +174,8 @@ func _physics_process(delta: float) -> void:
 		
 		if Input.is_action_pressed("look_up") or Input.is_action_pressed("look_down"):
 			direction = 0
+		if tiempo_daño > 0.0:
+			direction = 0
 		if direction and running == true:
 			velocity.x = direction * speed
 			running_time += delta
@@ -184,7 +186,9 @@ func _physics_process(delta: float) -> void:
 			running_time = 0.0
 			friction = false
 		else:
-			if friction == true:
+			if tiempo_daño > 0.0:
+				velocity.x = move_toward(velocity.x, 0, 5)
+			elif friction == true:
 				velocity.x = move_toward(velocity.x, 0, 7)
 			else:
 				velocity.x = move_toward(velocity.x, 0, speed)
@@ -246,9 +250,20 @@ func _process(delta: float) -> void:
 	$CanvasLayer/Health/Heart2.visible = health >= 1.5
 	$CanvasLayer/Health/Heart3.visible = health >= 2.5
 	
-func lose_health() -> void:
-	tiempo_daño = 0.2
+func lose_health(enemigo_pos_x: float = 0.0) -> void:
+	if tiempo_daño > 0.0:
+		return
+	tiempo_daño = 0.8
 	health -= 0.5
+	
+	var direccion_empuje = 1
+	if enemigo_pos_x != 0.0:
+		if global_position.x < enemigo_pos_x:
+			direccion_empuje = -1
+		else:
+			direccion_empuje = 1
+	velocity.y = -200
+	velocity.x = direccion_empuje * 200
 	if health <= 0:
 		morir()
 func morir() -> void:

@@ -18,7 +18,7 @@ animations = [{
 size = Vector2(24, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qjdjv"]
-size = Vector2(26, 34)
+size = Vector2(22, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nqvpf"]
 size = Vector2(133, 32)
