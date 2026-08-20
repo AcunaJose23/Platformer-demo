@@ -165,18 +165,18 @@ collision_layer = 2
 script = ExtResource("1_i3pqv")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1706365746]
-position = Vector2(-2.05, 0.20000005)
+position = Vector2(1, 38)
 scale = Vector2(0.08642384, 0.087610625)
 sprite_frames = SubResource("SpriteFrames_nqvpf")
 animation = &"air_up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=839086912]
-position = Vector2(-2, 1)
+position = Vector2(1, 40)
 shape = SubResource("CapsuleShape2D_eanf6")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1234578599]
 position = Vector2(0, -28)
-limit_left = 0
+limit_left = -148
 limit_bottom = 175
 script = ExtResource("3_sweqy")
 
