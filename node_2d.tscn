@@ -1,8 +1,28 @@
 [gd_scene format=3 uid="uid://obts6hnaxasa"]
 
-[ext_resource type="PackedScene" uid="uid://obts6hnaxasa" path="res://node_2d.tscn" id="1_wtcfe"]
+[ext_resource type="PackedScene" uid="uid://gig0yllii8dk" path="res://player.tscn" id="1_wtcfe"]
+[ext_resource type="PackedScene" uid="uid://cutpqmw6mxkx3" path="res://void.tscn" id="2_0e48y"]
+[ext_resource type="Texture2D" uid="uid://cp2af6lnl11f5" path="res://Sprites Plat/d181a7b4-1f24-4f54-8cc1-003e9a7efbcf.jpg" id="3_epypp"]
 
-[node name="Node2D" type="Node2D" unique_id=1477450437]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3onaq"]
+size = Vector2(987, 38)
 
-[node name="Node2D" parent="." unique_id=1856833523 instance=ExtResource("1_wtcfe")]
-position = Vector2(9, 5)
+[node name="Node2D" type="Node2D" unique_id=2028785410]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2130034232]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1011241239]
+position = Vector2(-31.5, 15)
+shape = SubResource("RectangleShape2D_3onaq")
+
+[node name="Player" parent="StaticBody2D" unique_id=709236726 instance=ExtResource("1_wtcfe")]
+position = Vector2(-23, -58)
+
+[node name="void" parent="StaticBody2D" unique_id=816054852 instance=ExtResource("2_0e48y")]
+position = Vector2(-605, 119)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1543913714]
+z_index = -1405
+position = Vector2(40, -96)
+scale = Vector2(0.2321959, 0.2606716)
+texture = ExtResource("3_epypp")
