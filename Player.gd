@@ -162,10 +162,14 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_pressed("ui_left"):
 			$Sprite2D.flip_h = true
 	else:
-		#run input
-		if Input.is_action_pressed("run") and running == false:
-			speed = run_speed
+		#run input and inertia
+		if Input.is_action_pressed("run"):
+			speed = run_speed * 0.8
 			running = true
+			if running_time >= 1.5:
+				speed = run_speed * 1
+			if running_time >= 2.5:
+				speed = run_speed * 1.3
 		elif Input.is_action_just_released("run") and running == true:
 			speed = walk_speed
 			running = false
