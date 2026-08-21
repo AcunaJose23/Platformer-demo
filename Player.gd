@@ -166,6 +166,7 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_pressed("run"):
 			speed = run_speed * 0.8
 			running = true
+			#Inertia
 			if running_time >= 1.5:
 				speed = run_speed * 1
 			if running_time >= 2.5:
