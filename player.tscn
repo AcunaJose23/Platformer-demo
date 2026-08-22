@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://dwrftgk6nej7t" path="res://camera_2d.gd" id="3_sweqy"]
 [ext_resource type="Texture2D" uid="uid://dyvfxooojfsl8" path="res://brackeys_platformer_assets/sprites/Caminar (2222.png" id="4_dw050"]
 [ext_resource type="FontFile" uid="uid://5ux76ui51big" path="res://Minecraft.ttf" id="4_hqtel"]
+[ext_resource type="Texture2D" uid="uid://dyktprjksfw67" path="res://brackeys_platformer_assets/sprites/fall.png" id="4_n7ghd"]
+[ext_resource type="Texture2D" uid="uid://5ssa86ek8x0j" path="res://brackeys_platformer_assets/sprites/dmg.png" id="5_b26j0"]
 [ext_resource type="Texture2D" uid="uid://bpmwyjgho6tvh" path="res://Sprites Plat/Idle real.png" id="5_dw050"]
 [ext_resource type="Texture2D" uid="uid://vgphgt3vxhvn" path="res://brackeys_platformer_assets/sprites/Heart.png" id="8_dw050"]
 
@@ -36,6 +38,22 @@ region = Rect2(0, 0, 302, 452)
 [sub_resource type="AtlasTexture" id="AtlasTexture_pylmc"]
 atlas = ExtResource("3_1jxqw")
 region = Rect2(604, 0, 302, 452)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7lmhl"]
+atlas = ExtResource("4_n7ghd")
+region = Rect2(0, 0, 302, 452)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dx0e4"]
+atlas = ExtResource("4_n7ghd")
+region = Rect2(302, 0, 302, 452)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jm5j8"]
+atlas = ExtResource("4_n7ghd")
+region = Rect2(604, 0, 302, 452)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtqh7"]
+atlas = ExtResource("4_n7ghd")
+region = Rect2(0, 452, 302, 452)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7hik5"]
 atlas = ExtResource("3_dw050")
@@ -108,6 +126,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_7lmhl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dx0e4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jm5j8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtqh7")
+}],
+"loop": 1,
+"name": &"air_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_7hik5")
 }],
 "loop": 1,
@@ -129,6 +164,14 @@ animations = [{
 }],
 "loop": 1,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_b26j0")
+}],
+"loop": 1,
+"name": &"dmg",
 "speed": 5.0
 }, {
 "frames": [{
@@ -167,7 +210,7 @@ script = ExtResource("1_i3pqv")
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1706365746]
 scale = Vector2(0.08642384, 0.087610625)
 sprite_frames = SubResource("SpriteFrames_nqvpf")
-animation = &"air_up"
+animation = &"air_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=839086912]
 shape = SubResource("CapsuleShape2D_eanf6")

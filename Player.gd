@@ -127,7 +127,6 @@ func _physics_process(delta: float) -> void:
 	# Cambiar color según el tiempo
 	if tiempo_daño > 0.0:
 		tiempo_daño -= delta
-		$Sprite2D.modulate = Color.RED
 	else:
 		if jump_hold_time > 0.0:
 			if jump_hold_time < 2.0:
@@ -203,21 +202,23 @@ func _physics_process(delta: float) -> void:
 			friction = false
 			
 		if direction != 0:
-			if running:
-				$Sprite2D.play("Run")
-			else:
-				$Sprite2D.play("default")
-			if direction > 0:
-				$Sprite2D.flip_h = false
-			if direction < 0:
-				$Sprite2D.flip_h = true
+			if tiempo_daño <= 0.0:
+				if running:
+					$Sprite2D.play("Run")
+				else:
+					$Sprite2D.play("default")
+				if direction > 0:
+					$Sprite2D.flip_h = false
+				if direction < 0:
+					$Sprite2D.flip_h = true
 				
 	# Idle animation
 	if is_on_floor() and velocity.x == 0 and not is_hanging and jump_hold_time == 0:
 		idle_time += delta
-		$Sprite2D.play("idle")
-		if idle_time >= 3.0:
+		if tiempo_daño <= 0.0:
 			$Sprite2D.play("idle")
+			if idle_time >= 3.0:
+				$Sprite2D.play("idle")
 	else:
 		idle_time = 0.0
 
@@ -230,10 +231,11 @@ func _physics_process(delta: float) -> void:
 			$Sprite2D.flip_h = true  # Mirar a la izquierda
 			
 		# 2. ANIMACIÓN (Subiendo o Cayendo)
-		if velocity.y < 0:
-			$Sprite2D.play("air_up") # Yendo hacia arriba
-		else:
-			$Sprite2D.play("air_up")
+		if tiempo_daño <= 0.0:
+			if velocity.y < 0:
+				$Sprite2D.play("air_up") # Yendo hacia arriba
+			else:
+				$Sprite2D.play("air_down")
 	move_and_slide()
 	
 func _process(delta: float) -> void:
@@ -260,6 +262,8 @@ func lose_health(enemigo_pos_x: float = 0.0) -> void:
 		return
 	tiempo_daño = 0.8
 	health -= 0.5
+	$Sprite2D.play("dmg")
+	jump_hold_time = 0.0
 	
 	var direccion_empuje = 1
 	if enemigo_pos_x != 0.0:

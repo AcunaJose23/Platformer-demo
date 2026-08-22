@@ -153,7 +153,7 @@ sources/1 = SubResource("TileSetScenesCollectionSource_ir8iy")
 [node name="Node2D" type="Node2D" unique_id=1856833523]
 
 [node name="Player" parent="." unique_id=709236726 instance=ExtResource("1_q6r6c")]
-position = Vector2(37, 123)
+position = Vector2(790, 136)
 
 [node name="npc" parent="." unique_id=361264881 instance=ExtResource("2_0hol4")]
 position = Vector2(161, 108)
