@@ -4826,10 +4826,3 @@ tile_set = SubResource("TileSet_rt40y")
 
 [node name="Branch" parent="." unique_id=739586488 instance=ExtResource("4_kskdi")]
 position = Vector2(445, 47)
-
-[connection signal="body_entered" from="tiles/TileMapLayer/Coin" to="tiles/TileMapLayer/Coin" method="_on_body_entered"]
-[connection signal="body_entered" from="tiles/TileMapLayer/@Area2D@72199" to="tiles/TileMapLayer/@Area2D@72199" method="_on_body_entered"]
-[connection signal="body_entered" from="tiles/TileMapLayer/@Area2D@72200" to="tiles/TileMapLayer/@Area2D@72200" method="_on_body_entered"]
-[connection signal="body_entered" from="tiles/TileMapLayer/@Area2D@72201" to="tiles/TileMapLayer/@Area2D@72201" method="_on_body_entered"]
-[connection signal="body_entered" from="tiles/TileMapLayer/@Area2D@72202" to="tiles/TileMapLayer/@Area2D@72202" method="_on_body_entered"]
-[connection signal="body_entered" from="tiles/TileMapLayer/@Area2D@72203" to="tiles/TileMapLayer/@Area2D@72203" method="_on_body_entered"]
