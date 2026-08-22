@@ -28,27 +28,29 @@ func _physics_process(delta: float) -> void:
 		#       MODO EMBESTIDA
 		# ==============================
 		# Corremos usando la dirección que guardamos ciegamente
+		$AnimatedSprite2D.play("Chase")
 		velocity.x = direccion_embestida * speed_embestida
 		
 		# Voltear Sprite al embestir
 		if direccion_embestida > 0:
-			$AnimatedSprite2D.flip_h = false
-		elif direccion_embestida < 0:
 			$AnimatedSprite2D.flip_h = true
+		elif direccion_embestida < 0:
+			$AnimatedSprite2D.flip_h = false
 
 	else:
 		# ==============================
 		#         MODO PATRULLA
 		# ==============================
+		$AnimatedSprite2D.play("Normal")
 		if destino_actual != null:
 			var direccion = sign(destino_actual.global_position.x - global_position.x)
 			velocity.x = direccion * speed_patrulla
 			
 			# Voltear Sprite al patrullar
 			if direccion > 0:
-				$AnimatedSprite2D.flip_h = false
-			elif direccion < 0:
 				$AnimatedSprite2D.flip_h = true
+			elif direccion < 0:
+				$AnimatedSprite2D.flip_h = false
 			
 			# Comprobar si ya llegamos al punto actual (< 5 píxeles de distancia)
 			var distancia = abs(global_position.x - destino_actual.global_position.x)

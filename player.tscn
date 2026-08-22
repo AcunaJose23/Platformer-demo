@@ -112,7 +112,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"air_up",
-"speed": 5.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
