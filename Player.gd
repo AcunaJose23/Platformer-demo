@@ -271,6 +271,16 @@ func lose_health(enemigo_pos_x: float = 0.0) -> void:
 	velocity.x = direccion_empuje * 200
 	if health <= 0:
 		morir()
+
+func caer_vacio() -> void:
+	health -= 1.0 # Quitamos 1 de vida entero (el equivalente a dos golpes de 0.5)
+	# Aquí no hay knockback ni tiempo de inmunidad, solo evaluamos si muere o reaparece
+	if health <= 0:
+		morir()
+	else:
+		reaparecer()
+
+
 func morir() -> void:
 	time_elapsed = 0
 	Global.monedas = 0
