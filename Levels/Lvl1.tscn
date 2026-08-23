@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://btl1luebu44p1" path="res://branch.tscn" id="4_kskdi"]
 [ext_resource type="PackedScene" uid="uid://yowgt5j2bso5" path="res://coin.tscn" id="4_threx"]
 [ext_resource type="Texture2D" uid="uid://c5jf8uffwqx2s" path="res://brackeys_platformer_assets/sprites/BLOQUE SIKGSDKLJSNLKIJKS.png" id="4_y3wse"]
+[ext_resource type="PackedScene" uid="uid://cutpqmw6mxkx3" path="res://void.tscn" id="7_kskdi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_584xh"]
 texture = ExtResource("3_y3wse")
@@ -4826,3 +4827,13 @@ tile_set = SubResource("TileSet_rt40y")
 
 [node name="Branch" parent="." unique_id=739586488 instance=ExtResource("4_kskdi")]
 position = Vector2(445, 47)
+
+[node name="void" parent="." unique_id=816054852 instance=ExtResource("7_kskdi")]
+position = Vector2(-489, 266)
+
+[connection signal="body_entered" from="tiles/TileMapLayer/Coin" to="tiles/TileMapLayer/Coin" method="_on_body_entered"]
+[connection signal="body_entered" from="tiles/TileMapLayer/@Area2D@25513" to="tiles/TileMapLayer/@Area2D@25513" method="_on_body_entered"]
+[connection signal="body_entered" from="tiles/TileMapLayer/@Area2D@25514" to="tiles/TileMapLayer/@Area2D@25514" method="_on_body_entered"]
+[connection signal="body_entered" from="tiles/TileMapLayer/@Area2D@25515" to="tiles/TileMapLayer/@Area2D@25515" method="_on_body_entered"]
+[connection signal="body_entered" from="tiles/TileMapLayer/@Area2D@25516" to="tiles/TileMapLayer/@Area2D@25516" method="_on_body_entered"]
+[connection signal="body_entered" from="tiles/TileMapLayer/@Area2D@25517" to="tiles/TileMapLayer/@Area2D@25517" method="_on_body_entered"]
