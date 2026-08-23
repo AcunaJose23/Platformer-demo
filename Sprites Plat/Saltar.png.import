@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvsc3ovjckup6"
-path="res://.godot/imported/Correr_lol.png-d059057757e3ae8441f51ca22b4bb3b9.ctex"
+uid="uid://cpk1qvp52qd88"
+path="res://.godot/imported/Saltar.png-ce9cc62b00906d4fa60e2b174cd1d7e4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites Plat/Correr_lol.png"
-dest_files=["res://.godot/imported/Correr_lol.png-d059057757e3ae8441f51ca22b4bb3b9.ctex"]
+source_file="res://Sprites Plat/Saltar.png"
+dest_files=["res://.godot/imported/Saltar.png-ce9cc62b00906d4fa60e2b174cd1d7e4.ctex"]
 
 [params]
 
