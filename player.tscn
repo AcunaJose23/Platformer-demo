@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://gig0yllii8dk"]
 
 [ext_resource type="Script" uid="uid://d3jphtfxyroju" path="res://Player.gd" id="1_i3pqv"]
+[ext_resource type="Shader" uid="uid://dpljshkmyrl2" path="res://hit_flash.gdshader" id="2_nvl01"]
 [ext_resource type="Texture2D" uid="uid://ca250pw7nlnsn" path="res://brackeys_platformer_assets/sprites/Correr lol.png" id="3_1jxqw"]
 [ext_resource type="Texture2D" uid="uid://btrg5y64j6byv" path="res://Sprites Plat/Saltar obvio.png" id="3_dw050"]
 [ext_resource type="Script" uid="uid://dwrftgk6nej7t" path="res://camera_2d.gd" id="3_sweqy"]
@@ -10,6 +11,12 @@
 [ext_resource type="Texture2D" uid="uid://5ssa86ek8x0j" path="res://brackeys_platformer_assets/sprites/dmg.png" id="5_b26j0"]
 [ext_resource type="Texture2D" uid="uid://bpmwyjgho6tvh" path="res://Sprites Plat/Idle real.png" id="5_dw050"]
 [ext_resource type="Texture2D" uid="uid://vgphgt3vxhvn" path="res://brackeys_platformer_assets/sprites/Heart.png" id="8_dw050"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_584xh"]
+shader = ExtResource("2_nvl01")
+shader_parameter/flash_color = Color(1, 0, 0, 1)
+shader_parameter/flash_amount = 0.0
+shader_parameter/solid_flash = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pbfsw"]
 atlas = ExtResource("3_dw050")
@@ -208,6 +215,7 @@ collision_layer = 2
 script = ExtResource("1_i3pqv")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1706365746]
+material = SubResource("ShaderMaterial_584xh")
 scale = Vector2(0.08642384, 0.087610625)
 sprite_frames = SubResource("SpriteFrames_nqvpf")
 animation = &"air_down"

@@ -260,6 +260,7 @@ func _process(delta: float) -> void:
 func lose_health(enemigo_pos_x: float = 0.0) -> void:
 	if tiempo_daño > 0.0:
 		return
+	Hit_flash()
 	tiempo_daño = 0.8
 	health -= 0.5
 	$Sprite2D.play("dmg")
@@ -292,3 +293,14 @@ func morir() -> void:
 func reaparecer() -> void:
 	global_position = aparecer
 	velocity = Vector2.ZERO
+
+#Hit Flash
+func Hit_flash() -> void:
+	# Verificamos que el Sprite tenga el Material asignado para evitar errores
+	if $Sprite2D.material != null:
+		# Ponemos el destello al máximo (blanco total)
+		$Sprite2D.material.set_shader_parameter("flash_amount", 1.0)
+		
+		# Creamos una animación (Tween) para devolverlo a 0.0 en 0.2 segundos
+		var tween = create_tween()
+		tween.tween_property($Sprite2D.material, "shader_parameter/flash_amount", 0.0, 0.2)
