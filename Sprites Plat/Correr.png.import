@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpmwyjgho6tvh"
-path="res://.godot/imported/Idle real.png-ef876670f35786eba1df1591142f3f85.ctex"
+uid="uid://btvhwytuyomq5"
+path="res://.godot/imported/Correr.png-976bb0414288efd80e79b280f935a9d1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites Plat/Idle real.png"
-dest_files=["res://.godot/imported/Idle real.png-ef876670f35786eba1df1591142f3f85.ctex"]
+source_file="res://Sprites Plat/Correr.png"
+dest_files=["res://.godot/imported/Correr.png-976bb0414288efd80e79b280f935a9d1.ctex"]
 
 [params]
 

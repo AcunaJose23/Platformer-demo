@@ -1,8 +1,39 @@
 [gd_scene format=3 uid="uid://c38b0gu2un4s5"]
 
 [ext_resource type="PackedScene" uid="uid://gig0yllii8dk" path="res://player.tscn" id="1_pxo5p"]
+[ext_resource type="Texture2D" uid="uid://c5jf8uffwqx2s" path="res://brackeys_platformer_assets/sprites/BLOQUE SIKGSDKLJSNLKIJKS.png" id="2_yhd3u"]
+[ext_resource type="Texture2D" uid="uid://dueuk38uslgjm" path="res://brackeys_platformer_assets/sprites/Tierra.png" id="3_w7elk"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w7elk"]
+resource_name = "Grass"
+texture = ExtResource("2_yhd3u")
+margins = Vector2i(89, 125)
+separation = Vector2i(178, 178)
+texture_region_size = Vector2i(592, 592)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qxjgh"]
+texture = ExtResource("3_w7elk")
+margins = Vector2i(89, 125)
+separation = Vector2i(178, 178)
+texture_region_size = Vector2i(592, 592)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_sc4of"]
+tile_size = Vector2i(592, 592)
+sources/0 = SubResource("TileSetAtlasSource_w7elk")
+sources/1 = SubResource("TileSetAtlasSource_qxjgh")
 
 [node name="Node2D" type="Node2D" unique_id=425343672]
 
 [node name="Player" parent="." unique_id=709236726 instance=ExtResource("1_pxo5p")]
 position = Vector2(27, 74)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1388480265]
+scale = Vector2(0.02, 0.02)
+tile_set = SubResource("TileSet_sc4of")
