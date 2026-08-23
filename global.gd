@@ -1,6 +1,8 @@
 extends Node
 
 var monedas: int = 0
+#espada
+var espada: bool = false
 var tiempo_final: int = 0
 var puntaje_total: int = 0
 

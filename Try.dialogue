@@ -4,8 +4,9 @@ Ian: Hola [[La vara|bot|bananin]], tenes que chabear
 	Ian: No me importa
 	do Global.cambiar_nivel("res://pantalla_puntuacion.tscn")
 	=> END
-- Second one
-	Nathan: You picked the second one.
+- No, mejor dame un arma [[bot|bodrio|banano]]
+	Ian: Tene entonces
+	set Global.espada = true
 - Start again => start
 - End the conversation => END
 Nathan: For more information see the online documentation.

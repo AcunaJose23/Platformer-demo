@@ -58,6 +58,10 @@ func _physics_process(delta: float) -> void:
 	if dialogue_active:
 		velocity = Vector2.ZERO
 		return	
+		
+	if Global.espada:
+		if Input.is_action_just_pressed("Parry"):
+			print("parry")
 
 	# 1. Agarrarse a la rama
 	if active_branch != null and Input.is_action_just_pressed("grab") and not is_hanging:
