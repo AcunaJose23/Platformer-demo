@@ -135,15 +135,15 @@ func _physics_process(delta: float) -> void:
 		if jump_hold_time > 0.0:
 			if jump_hold_time < 2.0:
 				$Sprite2D.frame = 0
-				$Sprite2D.modulate = Color.WHITE
+				$Sprite2D.material.set_shader_parameter("charge_color", Color.WHITE)
 			elif jump_hold_time < 4.0:
 				$Sprite2D.frame = 1
-				$Sprite2D.modulate = Color.YELLOW
+				$Sprite2D.material.set_shader_parameter("charge_color", Color.YELLOW)
 			else:
 				$Sprite2D.frame = 2
-				$Sprite2D.modulate = Color.RED
+				$Sprite2D.material.set_shader_parameter("charge_color", Color.RED)
 		else:
-			$Sprite2D.modulate = Color.WHITE
+			$Sprite2D.material.set_shader_parameter("charge_color", Color.WHITE)
 
 	# Execute jump buffer
 	if jump_buffer_time > 0.0 and is_on_floor():
