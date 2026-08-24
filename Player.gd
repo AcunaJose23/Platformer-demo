@@ -31,6 +31,10 @@ var aparecer: Vector2
 @export var es_contrareloj: bool = false
 @export var tiempo_maximo: float = 120.0
 
+@export var boss: bool = false
+@export var limite_izq_camara: int = 0
+@export var limite_der_camara: int = 331
+
 func _ready() -> void:
 	aparecer = global_position
 	DialogueManager.dialogue_started.connect(_on_dialogue_started)
@@ -38,6 +42,11 @@ func _ready() -> void:
 
 	if es_contrareloj:
 		time_elapsed = tiempo_maximo
+	
+	if boss == true:
+		# Le decimos a la cámara que no pase de estos píxeles
+		$Camera2D.limit_left = limite_izq_camara
+		$Camera2D.limit_right = limite_der_camara
 
 func _on_dialogue_started(_resource) -> void:
 	dialogue_active = true
@@ -79,9 +88,9 @@ func _physics_process(delta: float) -> void:
 			jump_hold_time += delta
 		
 		# Cambiar color según el tiempo
-		if jump_hold_time < 2.0:
+		if jump_hold_time < 1.0:
 			$Sprite2D.modulate = Color.WHITE
-		elif jump_hold_time < 4.0:
+		elif jump_hold_time < 2.5:
 			$Sprite2D.modulate = Color.YELLOW
 		else:
 			$Sprite2D.modulate = Color.RED
@@ -90,9 +99,9 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("jump"):
 			is_hanging = false
 			
-			if jump_hold_time < 2.0:
+			if jump_hold_time < 1.0:
 				velocity.y = JUMP_VELOCITY
-			elif jump_hold_time < 4.0:
+			elif jump_hold_time < 2.5:
 				velocity.y = JUMP_VELOCITY * 1.3
 			else:
 				velocity.y = JUMP_VELOCITY * 1.5
@@ -133,10 +142,10 @@ func _physics_process(delta: float) -> void:
 		tiempo_daño -= delta
 	else:
 		if jump_hold_time > 0.0:
-			if jump_hold_time < 2.0:
+			if jump_hold_time < 1.0:
 				$Sprite2D.frame = 0
 				$Sprite2D.material.set_shader_parameter("charge_color", Color.WHITE)
-			elif jump_hold_time < 4.0:
+			elif jump_hold_time < 2.5:
 				$Sprite2D.frame = 1
 				$Sprite2D.material.set_shader_parameter("charge_color", Color.YELLOW)
 			else:
@@ -147,9 +156,9 @@ func _physics_process(delta: float) -> void:
 
 	# Execute jump buffer
 	if jump_buffer_time > 0.0 and is_on_floor():
-		if jump_hold_time < 2.0:
+		if jump_hold_time < 1.0:
 			velocity.y = JUMP_VELOCITY
-		elif jump_hold_time < 4.0:
+		elif jump_hold_time < 2.5:
 			velocity.y = JUMP_VELOCITY * 1.3
 		else:
 			velocity.y = JUMP_VELOCITY * 1.5

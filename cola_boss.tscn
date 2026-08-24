@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://dg2oga0mgeqqv"]
+
+[ext_resource type="Script" uid="uid://ccs48rl61kclr" path="res://cola_boss.gd" id="1_f7wl1"]
+[ext_resource type="Texture2D" uid="uid://d4jlu67d17sje" path="res://brackeys_platformer_assets/sprites/dragon_tail.png" id="2_6sc1i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sol68"]
+size = Vector2(479, 22)
+
+[node name="ColaBoss" type="AnimatableBody2D" unique_id=413294781]
+script = ExtResource("1_f7wl1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=173361369]
+scale = Vector2(3.0000002, 2)
+texture = ExtResource("2_6sc1i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1759772118]
+position = Vector2(-0.5, 13)
+shape = SubResource("RectangleShape2D_sol68")
+
+[node name="Pincho1" type="Area2D" parent="." unique_id=285125197]
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Pincho1" unique_id=1669612148]
+position = Vector2(-5.7260976, -0.34023497)
+scale = Vector2(0.9011769, 0.9433594)
+polygon = PackedVector2Array(-57, -13, -77, -1, -53, -1)
+
+[node name="Pincho2" type="Area2D" parent="." unique_id=1571218310]
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Pincho2" unique_id=529206649]
+position = Vector2(-165.99998, -2.9802322e-08)
+scale = Vector2(0.9011769, 0.9433594)
+polygon = PackedVector2Array(-57, -13, -77, -1, -53, -1)
+
+[node name="Pincho3" type="Area2D" parent="." unique_id=1616054439]
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Pincho3" unique_id=723892602]
+position = Vector2(89.999985, -3.5527137e-15)
+scale = Vector2(0.9011769, 0.9433594)
+polygon = PackedVector2Array(-57, -13, -77, -1, -53, -1)
+
+[node name="Pincho4" type="Area2D" parent="." unique_id=702252770]
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Pincho4" unique_id=1589529959]
+position = Vector2(186, 0.9999999)
+scale = Vector2(0.9011769, 0.9433594)
+polygon = PackedVector2Array(-57, -13, -77, -1, -53, -1)
+
+[connection signal="body_entered" from="Pincho1" to="." method="_on_pincho_1_body_entered"]
+[connection signal="body_entered" from="Pincho2" to="." method="_on_pincho_2_body_entered"]
+[connection signal="body_entered" from="Pincho3" to="." method="_on_pincho_3_body_entered"]
+[connection signal="body_entered" from="Pincho4" to="." method="_on_pincho_4_body_entered"]

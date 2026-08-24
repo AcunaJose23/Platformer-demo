@@ -1,0 +1,50 @@
+[gd_scene format=4 uid="uid://c6dek535xfjqw"]
+
+[ext_resource type="PackedScene" uid="uid://gig0yllii8dk" path="res://player.tscn" id="1_ejcoh"]
+[ext_resource type="Texture2D" uid="uid://c5jf8uffwqx2s" path="res://brackeys_platformer_assets/sprites/BLOQUE SIKGSDKLJSNLKIJKS.png" id="2_ktmlk"]
+[ext_resource type="Texture2D" uid="uid://dueuk38uslgjm" path="res://brackeys_platformer_assets/sprites/Tierra.png" id="3_iuogc"]
+[ext_resource type="PackedScene" uid="uid://dg2oga0mgeqqv" path="res://cola_boss.tscn" id="4_3pa4b"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yxpl7"]
+resource_name = "Grass"
+texture = ExtResource("2_ktmlk")
+margins = Vector2i(89, 125)
+separation = Vector2i(178, 178)
+texture_region_size = Vector2i(592, 592)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-296, -296, 296, -296, 296, 296, -296, 296)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-296, -296, 296, -296, 296, 296, -296, 296)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-296, -296, 296, -296, 296, 296, -296, 296)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i4ms0"]
+texture = ExtResource("3_iuogc")
+margins = Vector2i(89, 125)
+separation = Vector2i(178, 178)
+texture_region_size = Vector2i(592, 592)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-296, -296, 296, -296, 296, 296, -296, 296)
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_d3q7g"]
+tile_size = Vector2i(592, 592)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_yxpl7")
+sources/1 = SubResource("TileSetAtlasSource_i4ms0")
+
+[node name="Prueba boss" type="Node2D" unique_id=288648402]
+
+[node name="Player" parent="." unique_id=709236726 instance=ExtResource("1_ejcoh")]
+position = Vector2(149, 147)
+boss = true
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1379361411]
+scale = Vector2(0.02, 0.02)
+tile_map_data = PackedByteArray("AAAAAA4AAQAAAAAAAAABAA4AAQAAAAAAAAACAA4AAQAAAAAAAAADAA4AAQAAAAAAAAAEAA4AAQAAAAAAAAAFAA4AAQAAAAAAAAAGAA4AAQAAAAAAAAAHAA4AAQAAAAAAAAAIAA4AAQAAAAAAAAAJAA4AAQAAAAAAAAAKAA4AAQAAAAAAAAALAA4AAQAAAAAAAAAMAA4AAQAAAAAAAAANAA4AAQAAAAAAAAAOAA4AAQAAAAAAAAAPAA4AAQAAAAAAAAAQAA4AAQAAAAAAAAARAA4AAQAAAAAAAAASAA4AAQAAAAAAAAATAA4AAQAAAAAAAAAUAA4AAQAAAAAAAAAVAA4AAQAAAAAAAAAWAA4AAQAAAAAAAAAXAA4AAQAAAAAAAAAYAA4AAQAAAAAAAAAZAA4AAQAAAAAAAAAaAA4AAQAAAAAAAAAbAA4AAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_d3q7g")
+
+[node name="ColaBoss" parent="." unique_id=413294781 instance=ExtResource("4_3pa4b")]
+position = Vector2(-1, -1)
