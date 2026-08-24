@@ -47,6 +47,10 @@ func _ready() -> void:
 		# Le decimos a la cámara que no pase de estos píxeles
 		$Camera2D.limit_left = limite_izq_camara
 		$Camera2D.limit_right = limite_der_camara
+	# --- NUEVO: Limpiar el Shader al nacer ---
+	if $Sprite2D.material != null:
+		$Sprite2D.material.set_shader_parameter("charge_color", Color.WHITE)
+		$Sprite2D.material.set_shader_parameter("flash_amount", 0.0)
 
 func _on_dialogue_started(_resource) -> void:
 	dialogue_active = true

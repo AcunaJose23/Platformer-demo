@@ -13,10 +13,12 @@
 [ext_resource type="Texture2D" uid="uid://cuqs8rdise0cw" path="res://Sprites Plat/IDLE.png" id="8_nvl01"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_584xh"]
+resource_local_to_scene = true
 shader = ExtResource("2_nvl01")
 shader_parameter/flash_color = Color(1, 0, 0, 1)
 shader_parameter/flash_amount = 0.0
 shader_parameter/solid_flash = false
+shader_parameter/charge_color = Color(1, 1, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ivps1"]
 atlas = ExtResource("3_nvl01")
