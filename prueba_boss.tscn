@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dg0075pcjykgb" path="res://brackeys_platformer_assets/sprites/dragon_head.png" id="5_iuogc"]
 [ext_resource type="Script" uid="uid://dpxe7te4ggqdo" path="res://CabezaBoss.gd" id="6_3pa4b"]
 [ext_resource type="PackedScene" uid="uid://vcur3k2mvpg3" path="res://bola_fuego.tscn" id="6_yxpl7"]
+[ext_resource type="PackedScene" uid="uid://cutpqmw6mxkx3" path="res://void.tscn" id="8_yxpl7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yxpl7"]
 resource_name = "Grass"
@@ -70,5 +71,8 @@ texture = ExtResource("5_iuogc")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CabezaBoss" unique_id=1090100426]
 position = Vector2(1.9999999, 4.3999996)
 shape = SubResource("CircleShape2D_sc4of")
+
+[node name="void" parent="." unique_id=816054852 instance=ExtResource("8_yxpl7")]
+position = Vector2(-189, 268)
 
 [connection signal="area_entered" from="CabezaBoss" to="CabezaBoss" method="_on_area_entered"]
