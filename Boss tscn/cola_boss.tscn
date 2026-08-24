@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dg2oga0mgeqqv"]
 
-[ext_resource type="Script" uid="uid://ccs48rl61kclr" path="res://cola_boss.gd" id="1_f7wl1"]
+[ext_resource type="Script" uid="uid://ccs48rl61kclr" path="res://Boss tscn/cola_boss.gd" id="1_f7wl1"]
 [ext_resource type="Texture2D" uid="uid://d4jlu67d17sje" path="res://brackeys_platformer_assets/sprites/dragon_tail.png" id="2_6sc1i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sol68"]

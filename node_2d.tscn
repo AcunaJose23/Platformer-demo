@@ -159,7 +159,7 @@ sources/3 = SubResource("TileSetScenesCollectionSource_4d7sh")
 [node name="Node2D" type="Node2D" unique_id=1856833523]
 
 [node name="Player" parent="." unique_id=709236726 instance=ExtResource("1_q6r6c")]
-position = Vector2(790, 136)
+position = Vector2(76, 117)
 
 [node name="npc" parent="." unique_id=361264881 instance=ExtResource("2_0hol4")]
 position = Vector2(161, 108)
@@ -277,14 +277,14 @@ grow_vertical = 2
 scale = Vector2(1.0268401, 1)
 text = "Reanudar"
 
-[connection signal="body_entered" from="tiles/TileMapLayer/@Area2D@28742" to="tiles/TileMapLayer/@Area2D@28742" method="_on_body_entered"]
-[connection signal="body_entered" from="tiles/TileMapLayer/@Area2D@28743" to="tiles/TileMapLayer/@Area2D@28743" method="_on_body_entered"]
-[connection signal="body_entered" from="tiles/TileMapLayer/@Area2D@28744" to="tiles/TileMapLayer/@Area2D@28744" method="_on_body_entered"]
-[connection signal="body_entered" from="tiles/TileMapLayer/@Area2D@28745" to="tiles/TileMapLayer/@Area2D@28745" method="_on_body_entered"]
-[connection signal="body_entered" from="tiles/TileMapLayer/@Area2D@28746" to="tiles/TileMapLayer/@Area2D@28746" method="_on_body_entered"]
-[connection signal="body_entered" from="tiles/TileMapLayer/@Area2D@28747" to="tiles/TileMapLayer/@Area2D@28747" method="_on_body_entered"]
-[connection signal="body_entered" from="tiles/TileMapLayer/@Area2D@28748" to="tiles/TileMapLayer/@Area2D@28748" method="_on_body_entered"]
-[connection signal="body_entered" from="tiles/TileMapLayer/@Area2D@28749" to="tiles/TileMapLayer/@Area2D@28749" method="_on_body_entered"]
-[connection signal="body_entered" from="tiles/TileMapLayer/@Area2D@28750" to="tiles/TileMapLayer/@Area2D@28750" method="_on_body_entered"]
+[connection signal="body_entered" from="tiles/TileMapLayer/Coin" to="tiles/TileMapLayer/Coin" method="_on_body_entered"]
+[connection signal="body_entered" from="tiles/TileMapLayer/@Area2D@78232" to="tiles/TileMapLayer/@Area2D@78232" method="_on_body_entered"]
+[connection signal="body_entered" from="tiles/TileMapLayer/@Area2D@78233" to="tiles/TileMapLayer/@Area2D@78233" method="_on_body_entered"]
+[connection signal="body_entered" from="tiles/TileMapLayer/@Area2D@78234" to="tiles/TileMapLayer/@Area2D@78234" method="_on_body_entered"]
+[connection signal="body_entered" from="tiles/TileMapLayer/@Area2D@78235" to="tiles/TileMapLayer/@Area2D@78235" method="_on_body_entered"]
+[connection signal="body_entered" from="tiles/TileMapLayer/@Area2D@78236" to="tiles/TileMapLayer/@Area2D@78236" method="_on_body_entered"]
+[connection signal="body_entered" from="tiles/TileMapLayer/@Area2D@78237" to="tiles/TileMapLayer/@Area2D@78237" method="_on_body_entered"]
+[connection signal="body_entered" from="tiles/TileMapLayer/@Area2D@78238" to="tiles/TileMapLayer/@Area2D@78238" method="_on_body_entered"]
+[connection signal="body_entered" from="tiles/TileMapLayer/@Area2D@78239" to="tiles/TileMapLayer/@Area2D@78239" method="_on_body_entered"]
 [connection signal="pressed" from="Menus/PantallaInicio/Jugar" to="Menus" method="_on_jugar_pressed"]
 [connection signal="pressed" from="Menus/PantallaPausa/Reanudar" to="Menus" method="_on_reanudar_pressed"]

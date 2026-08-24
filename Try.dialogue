@@ -7,6 +7,8 @@ Ian: Hola [[La vara|bot|bananin]], tenes que chabear
 - No, mejor dame un arma [[bot|bodrio|banano]]
 	Ian: Tene entonces
 	set Global.espada = true
+	do Global.cambiar_nivel("res://prueba_boss.tscn")
+	=> END
 - Start again => start
 - End the conversation => END
 Nathan: For more information see the online documentation.

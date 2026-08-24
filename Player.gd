@@ -27,6 +27,9 @@ var tiempo_daño = 0.0
 #aparecer
 var aparecer: Vector2
 
+#parry
+var haciendo_parry = false
+
 #contrareloj
 @export var es_contrareloj: bool = false
 @export var tiempo_maximo: float = 120.0
@@ -73,8 +76,17 @@ func _physics_process(delta: float) -> void:
 		return	
 		
 	if Global.espada:
-		if Input.is_action_just_pressed("Parry"):
-			print("parry")
+	# Añadimos 'and not haciendo_parry' para que no puedas spamear el botón
+		if Input.is_action_just_pressed("Parry") and not haciendo_parry:
+			haciendo_parry = true
+		
+			# ¡Reproducimos la animación! (Asegúrate de que el nombre coincida exacto)
+			$Sprite2D.play("parry") 
+			$HitboxEspada/CollisionShape2D.disabled = false 
+			# El tiempo activo del parry (Ajusta esto a lo que dure tu animación, ej: 0.3)
+			await get_tree().create_timer(0.3).timeout 
+			$HitboxEspada/CollisionShape2D.disabled = true 
+			haciendo_parry = false # Quitamos el cartel de "No molestar"
 
 	# 1. Agarrarse a la rama
 	if active_branch != null and Input.is_action_just_pressed("grab") and not is_hanging:
@@ -219,7 +231,7 @@ func _physics_process(delta: float) -> void:
 			friction = false
 			
 		if direction != 0:
-			if tiempo_daño <= 0.0:
+			if tiempo_daño <= 0.0 and not haciendo_parry:
 				if running:
 					$Sprite2D.play("Run")
 				else:
@@ -232,7 +244,7 @@ func _physics_process(delta: float) -> void:
 	# Idle animation
 	if is_on_floor() and velocity.x == 0 and not is_hanging and jump_hold_time == 0:
 		idle_time += delta
-		if tiempo_daño <= 0.0:
+		if tiempo_daño <= 0.0 and not haciendo_parry:
 			$Sprite2D.play("idle")
 			if idle_time >= 3.0:
 				$Sprite2D.play("idle")
@@ -248,7 +260,7 @@ func _physics_process(delta: float) -> void:
 			$Sprite2D.flip_h = true  # Mirar a la izquierda
 			
 		# 2. ANIMACIÓN (Subiendo o Cayendo)
-		if tiempo_daño <= 0.0:
+		if tiempo_daño <= 0.0 and not haciendo_parry:
 			if velocity.y < 0:
 				$Sprite2D.play("air_up") # Yendo hacia arriba
 			else:
@@ -321,3 +333,9 @@ func Hit_flash() -> void:
 		# Creamos una animación (Tween) para devolverlo a 0.0 en 0.2 segundos
 		var tween = create_tween()
 		tween.tween_property($Sprite2D.material, "shader_parameter/flash_amount", 0.0, 0.2)
+
+
+func _on_hitbox_espada_area_entered(area: Area2D) -> void:
+	# Si la espada choca con algo que esté en el grupo "bola_fuego"...
+	if area.is_in_group("bola_fuego") and area.has_method("ser_parreada"):
+		area.ser_parreada() # ¡Le hacemos el parry!

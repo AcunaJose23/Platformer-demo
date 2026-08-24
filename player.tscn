@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://5ssa86ek8x0j" path="res://brackeys_platformer_assets/sprites/dmg.png" id="5_b26j0"]
 [ext_resource type="Texture2D" uid="uid://vgphgt3vxhvn" path="res://brackeys_platformer_assets/sprites/Heart.png" id="8_dw050"]
 [ext_resource type="Texture2D" uid="uid://cuqs8rdise0cw" path="res://Sprites Plat/IDLE.png" id="8_nvl01"]
+[ext_resource type="Texture2D" uid="uid://dk0dbma2tv43k" path="res://brackeys_platformer_assets/sprites/parry.png" id="9_ivps1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_584xh"]
 resource_local_to_scene = true
@@ -199,11 +200,22 @@ animations = [{
 "loop": 1,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_ivps1")
+}],
+"loop": 1,
+"name": &"parry",
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eanf6"]
 radius = 5.5
 height = 34.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sc4of"]
+size = Vector2(29.25, 6)
 
 [sub_resource type="LabelSettings" id="LabelSettings_sweqy"]
 font = ExtResource("4_hqtel")
@@ -220,10 +232,17 @@ script = ExtResource("1_i3pqv")
 material = SubResource("ShaderMaterial_584xh")
 scale = Vector2(0.08642384, 0.087610625)
 sprite_frames = SubResource("SpriteFrames_nqvpf")
-animation = &"air_up"
+animation = &"parry"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=839086912]
 shape = SubResource("CapsuleShape2D_eanf6")
+
+[node name="HitboxEspada" type="Area2D" parent="." unique_id=10515278]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxEspada" unique_id=1597647848]
+position = Vector2(0, -17)
+shape = SubResource("RectangleShape2D_sc4of")
+disabled = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1234578599]
 position = Vector2(0, -28)
@@ -275,3 +294,5 @@ expand_mode = 2
 layout_mode = 2
 texture = ExtResource("8_dw050")
 expand_mode = 2
+
+[connection signal="area_entered" from="HitboxEspada" to="." method="_on_hitbox_espada_area_entered"]

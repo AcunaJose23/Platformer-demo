@@ -3,7 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://gig0yllii8dk" path="res://player.tscn" id="1_ejcoh"]
 [ext_resource type="Texture2D" uid="uid://c5jf8uffwqx2s" path="res://brackeys_platformer_assets/sprites/BLOQUE SIKGSDKLJSNLKIJKS.png" id="2_ktmlk"]
 [ext_resource type="Texture2D" uid="uid://dueuk38uslgjm" path="res://brackeys_platformer_assets/sprites/Tierra.png" id="3_iuogc"]
-[ext_resource type="PackedScene" uid="uid://dg2oga0mgeqqv" path="res://cola_boss.tscn" id="4_3pa4b"]
+[ext_resource type="PackedScene" uid="uid://dg2oga0mgeqqv" path="res://Boss tscn/cola_boss.tscn" id="4_3pa4b"]
+[ext_resource type="Texture2D" uid="uid://dg0075pcjykgb" path="res://brackeys_platformer_assets/sprites/dragon_head.png" id="5_iuogc"]
+[ext_resource type="Script" uid="uid://dpxe7te4ggqdo" path="res://CabezaBoss.gd" id="6_3pa4b"]
+[ext_resource type="PackedScene" uid="uid://vcur3k2mvpg3" path="res://bola_fuego.tscn" id="6_yxpl7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yxpl7"]
 resource_name = "Grass"
@@ -35,6 +38,9 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_yxpl7")
 sources/1 = SubResource("TileSetAtlasSource_i4ms0")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_sc4of"]
+radius = 14.091132
+
 [node name="Prueba boss" type="Node2D" unique_id=288648402]
 
 [node name="Player" parent="." unique_id=709236726 instance=ExtResource("1_ejcoh")]
@@ -46,5 +52,23 @@ scale = Vector2(0.02, 0.02)
 tile_map_data = PackedByteArray("AAAAAA4AAQAAAAAAAAABAA4AAQAAAAAAAAACAA4AAQAAAAAAAAADAA4AAQAAAAAAAAAEAA4AAQAAAAAAAAAFAA4AAQAAAAAAAAAGAA4AAQAAAAAAAAAHAA4AAQAAAAAAAAAIAA4AAQAAAAAAAAAJAA4AAQAAAAAAAAAKAA4AAQAAAAAAAAALAA4AAQAAAAAAAAAMAA4AAQAAAAAAAAANAA4AAQAAAAAAAAAOAA4AAQAAAAAAAAAPAA4AAQAAAAAAAAAQAA4AAQAAAAAAAAARAA4AAQAAAAAAAAASAA4AAQAAAAAAAAATAA4AAQAAAAAAAAAUAA4AAQAAAAAAAAAVAA4AAQAAAAAAAAAWAA4AAQAAAAAAAAAXAA4AAQAAAAAAAAAYAA4AAQAAAAAAAAAZAA4AAQAAAAAAAAAaAA4AAQAAAAAAAAAbAA4AAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_d3q7g")
 
-[node name="ColaBoss" parent="." unique_id=413294781 instance=ExtResource("4_3pa4b")]
+[node name="ColaBoss" parent="." unique_id=413294781 node_paths=PackedStringArray("cabeza_dragon") instance=ExtResource("4_3pa4b")]
 position = Vector2(-1, -1)
+cabeza_dragon = NodePath("../CabezaBoss")
+
+[node name="CabezaBoss" type="Area2D" parent="." unique_id=1152498414 node_paths=PackedStringArray("player")]
+position = Vector2(213, 43)
+scale = Vector2(2.5, 2.5)
+script = ExtResource("6_3pa4b")
+escena_bola = ExtResource("6_yxpl7")
+player = NodePath("../Player")
+
+[node name="Sprite2D" type="Sprite2D" parent="CabezaBoss" unique_id=123239751]
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("5_iuogc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CabezaBoss" unique_id=1090100426]
+position = Vector2(1.9999999, 4.3999996)
+shape = SubResource("CircleShape2D_sc4of")
+
+[connection signal="area_entered" from="CabezaBoss" to="CabezaBoss" method="_on_area_entered"]
