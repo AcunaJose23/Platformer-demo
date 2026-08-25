@@ -6,6 +6,7 @@ var fue_parreada = false
 
 func _process(delta: float) -> void:
 	position += direccion * velocidad * delta
+	rotation = direccion.angle() - (PI / 2)
 
 func _on_body_entered(body: Node2D) -> void:
 	if not fue_parreada and body.has_method("lose_health"):
