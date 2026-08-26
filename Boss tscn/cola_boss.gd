@@ -61,7 +61,7 @@ func termino_el_ataque() -> void:
 	if cabeza_dragon != null:
 		cabeza_dragon.aparecer()
 
-func _process(_delta: float) -> void:
-	# MODO DE PRUEBA: Presiona la tecla "Enter" o "Espacio" para iniciar el ataque
-	if Input.is_action_just_pressed("ui_accept"):
-		ataque_barrido()
+#func _process(_delta: float) -> void:
+#	# MODO DE PRUEBA: Presiona la tecla "Enter" o "Espacio" para iniciar el ataque
+#	if Input.is_action_just_pressed("ui_accept"):
+#		ataque_barrido()

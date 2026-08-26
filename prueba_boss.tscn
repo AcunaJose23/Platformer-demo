@@ -57,12 +57,13 @@ tile_set = SubResource("TileSet_d3q7g")
 position = Vector2(-1, -1)
 cabeza_dragon = NodePath("../CabezaBoss")
 
-[node name="CabezaBoss" type="Area2D" parent="." unique_id=1152498414 node_paths=PackedStringArray("player")]
+[node name="CabezaBoss" type="Area2D" parent="." unique_id=1152498414 node_paths=PackedStringArray("player", "cola_boss")]
 position = Vector2(213, 43)
 scale = Vector2(2.5, 2.5)
 script = ExtResource("6_3pa4b")
 escena_bola = ExtResource("6_yxpl7")
 player = NodePath("../Player")
+cola_boss = NodePath("../ColaBoss")
 
 [node name="Sprite2D" type="Sprite2D" parent="CabezaBoss" unique_id=123239751]
 scale = Vector2(0.99999994, 0.99999994)
