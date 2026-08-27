@@ -1,0 +1,49 @@
+[gd_scene format=4 uid="uid://fuquh0aibtg3"]
+
+[ext_resource type="Texture2D" uid="uid://cp2af6lnl11f5" path="res://Sprites Plat/d181a7b4-1f24-4f54-8cc1-003e9a7efbcf.jpg" id="1_tftiq"]
+[ext_resource type="PackedScene" uid="uid://gig0yllii8dk" path="res://player.tscn" id="2_1gg6n"]
+[ext_resource type="Texture2D" uid="uid://c5jf8uffwqx2s" path="res://brackeys_platformer_assets/sprites/BLOQUE SIKGSDKLJSNLKIJKS.png" id="3_x4164"]
+[ext_resource type="Texture2D" uid="uid://dueuk38uslgjm" path="res://brackeys_platformer_assets/sprites/Tierra.png" id="4_8ldoj"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ein8w"]
+resource_name = "Grass"
+texture = ExtResource("3_x4164")
+margins = Vector2i(89, 125)
+separation = Vector2i(178, 178)
+texture_region_size = Vector2i(592, 592)
+0:0/0 = 0
+0:0/0/modulate = Color(0.36054146, 1, 0.8526494, 1)
+1:0/0 = 0
+0:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gm5bj"]
+texture = ExtResource("4_8ldoj")
+margins = Vector2i(89, 125)
+separation = Vector2i(178, 178)
+texture_region_size = Vector2i(592, 592)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_g30ku"]
+tile_size = Vector2i(592, 592)
+sources/0 = SubResource("TileSetAtlasSource_ein8w")
+sources/1 = SubResource("TileSetAtlasSource_gm5bj")
+
+[node name="Lobby" type="Node2D" unique_id=718863659]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=456846929]
+z_index = -980
+position = Vector2(1.0000076, -104)
+scale = Vector2(0.23076923, 0.2285873)
+texture = ExtResource("1_tftiq")
+
+[node name="Player" parent="." unique_id=709236726 instance=ExtResource("2_1gg6n")]
+position = Vector2(-24, -29)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=154024409]
+position = Vector2(0, -3)
+scale = Vector2(0.02, 0.02)
+tile_map_data = PackedByteArray("AADw/wAAAAAAAAAAAADx/wAAAAAAAAAAAADy/wAAAAAAAAAAAADz/wAAAAAAAAAAAAD0/wAAAAAAAAAAAAD1/wAAAAAAAAAAAAD3/wAAAAAAAAAAAAD2/wAAAAAAAAAAAAD4/wAAAAAAAAAAAAD6/wAAAAAAAAAAAAD5/wAAAAAAAAAAAAD7/wAAAAAAAAAAAAD8/wAAAAAAAAAAAAD9/wAAAAAAAAAAAAD+/wAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAABAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAAAAAEAAAAEAAAAAAAAAAEAAAAFAAAAAAAAAAEAAAAGAAAAAAAAAAEAAAAHAAAAAAAAAAEAAAAIAAAAAAAAAAEAAAAJAAAAAAABAAAAAAAKAAAAAAABAAAAAAALAAAAAAABAAAAAAAMAAAAAAABAAAAAAANAAAAAAABAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_g30ku")
