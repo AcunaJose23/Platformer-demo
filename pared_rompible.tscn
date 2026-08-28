@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://510m2kj2rc6s"]
 
-[ext_resource type="Texture2D" uid="uid://bjh2hd4vddo4q" path="res://brackeys_platformer_assets/sprites/world_tileset.png" id="1_fee38"]
 [ext_resource type="Script" uid="uid://dx4htg1ixg6t0" path="res://pared_rompible.gd" id="1_ycrjp"]
+[ext_resource type="Texture2D" uid="uid://dueuk38uslgjm" path="res://brackeys_platformer_assets/sprites/Tierra.png" id="2_ycrjp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sc4of"]
 size = Vector2(16, 16)
@@ -10,10 +10,15 @@ size = Vector2(16, 16)
 script = ExtResource("1_ycrjp")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=363173851]
-texture = ExtResource("1_fee38")
+position = Vector2(0.07677901, -0.28124958)
+scale = Vector2(0.02910379, 0.028034566)
+texture = ExtResource("2_ycrjp")
+offset = Vector2(1.1, 0)
 region_enabled = true
-region_rect = Rect2(16, 0, 16, 16)
+region_rect = Rect2(78.1926, 110.63851, 611.5913, 622.71124)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=123153496]
 visible = false
+modulate = Color(0.45040828, 0.9999998, 0.8657433, 1)
+self_modulate = Color(0.26614887, 0.9999998, 0.9940956, 1)
 shape = SubResource("RectangleShape2D_sc4of")
