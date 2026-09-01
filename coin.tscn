@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b7ftxdu0j7sq3" path="res://Sprites Plat/jkgersdfnijuertnijrtf9oiju.png" id="3_v7riw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tbfu8"]
-radius = 15.811388
+radius = 8.062258
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mhqpk"]
 shader = ExtResource("2_pdq0q")
@@ -112,8 +112,8 @@ shape = SubResource("CircleShape2D_tbfu8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1544599672]
 material = SubResource("ShaderMaterial_mhqpk")
-position = Vector2(1.9073486e-06, 3)
-scale = Vector2(0.0690918, 0.067669466)
+position = Vector2(-0.99999994, 0)
+scale = Vector2(0.036449086, 0.037439756)
 sprite_frames = SubResource("SpriteFrames_sc4of")
 animation = &"coin"
 frame_progress = 0.09436238
