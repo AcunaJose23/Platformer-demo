@@ -1,6 +1,164 @@
 [gd_scene format=3 uid="uid://dnnlkaq3dfv1h"]
 
 [ext_resource type="Script" uid="uid://cra06kngal321" path="res://pantalla_puntuacion.gd" id="1_pbi0l"]
+[ext_resource type="Script" uid="uid://c1ldyh62n7neg" path="res://3.gd" id="2_bu6y3"]
+[ext_resource type="Script" uid="uid://brp1a800kl1ti" path="res://5.gd" id="3_tjsyv"]
+[ext_resource type="Script" uid="uid://cxuou3woxog3h" path="res://6.gd" id="4_ntf26"]
+[ext_resource type="Texture2D" uid="uid://vs7x5fyabirh" path="res://Sprites Plat/Pija.png" id="5_g4l6b"]
+[ext_resource type="Script" uid="uid://03psrj00fqj4" path="res://7.gd" id="6_ij85x"]
+[ext_resource type="Shader" uid="uid://d3iygp4jan26c" path="res://igusduygafhyguafhygufasdfyjguas.gdshader" id="7_bkwxa"]
+[ext_resource type="Texture2D" uid="uid://jyb63bosn4no" path="res://Sprites Plat/Fodi.png" id="8_5ap7h"]
+[ext_resource type="Script" uid="uid://bild5m8gnsukq" path="res://fobsdi.gd" id="9_2pj0u"]
+
+[sub_resource type="Animation" id="Animation_7ak84"]
+resource_name = "Algo"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.53333336),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3akkd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g2wtr"]
+_data = {
+&"Algo": SubResource("Animation_7ak84"),
+&"RESET": SubResource("Animation_3akkd")
+}
+
+[sub_resource type="Animation" id="Animation_2seqt"]
+resource_name = "Algo2"
+length = 2.0666666
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.96666664, 1.5666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_lhdva"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7nepq"]
+_data = {
+&"Algo2": SubResource("Animation_2seqt"),
+&"RESET": SubResource("Animation_lhdva")
+}
+
+[sub_resource type="Animation" id="Animation_anhye"]
+resource_name = "Algo3"
+length = 3.0666666
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.5333333, 2.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_p1s8x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_loeab"]
+_data = {
+&"Algo3": SubResource("Animation_anhye"),
+&"RESET": SubResource("Animation_p1s8x")
+}
+
+[sub_resource type="Animation" id="Animation_ieoy1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(218, 160)]
+}
+
+[sub_resource type="Animation" id="Animation_smfpg"]
+resource_name = "Sircfea"
+length = 3.8333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2.4333334, 3.2333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(218, 160), Vector2(223, 5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4bam0"]
+_data = {
+&"RESET": SubResource("Animation_ieoy1"),
+&"Sircfea": SubResource("Animation_smfpg")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3onaq"]
+shader = ExtResource("7_bkwxa")
 
 [node name="PantallaPuntuacion" type="Control" unique_id=1099116906]
 layout_mode = 3
@@ -12,10 +170,13 @@ grow_vertical = 2
 script = ExtResource("1_pbi0l")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1592881720]
+z_index = -7
 layout_mode = 0
-offset_right = 387.0
-offset_bottom = 180.0
-color = Color(1, 1, 0.45490196, 1)
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 348.0
+offset_bottom = 181.0
+color = Color(0.19599998, 0.30519998, 0.7, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1704145208]
 layout_mode = 1
@@ -38,14 +199,52 @@ layout_mode = 2
 [node name="PuntajeText" type="Label" parent="VBoxContainer" unique_id=989780026]
 layout_mode = 2
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer/PuntajeText" unique_id=2116513102]
+libraries/ = SubResource("AnimationLibrary_g2wtr")
+script = ExtResource("2_bu6y3")
+
 [node name="MonedasText" type="Label" parent="VBoxContainer" unique_id=1682434499]
 layout_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer/MonedasText" unique_id=1029401527]
+libraries/ = SubResource("AnimationLibrary_7nepq")
+script = ExtResource("3_tjsyv")
 
 [node name="TiempoText" type="Label" parent="VBoxContainer" unique_id=631760029]
 layout_mode = 2
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer/TiempoText" unique_id=1362176714]
+libraries/ = SubResource("AnimationLibrary_loeab")
+script = ExtResource("4_ntf26")
+
 [node name="BotonSiguiente" type="Button" parent="VBoxContainer" unique_id=1176199107]
 layout_mode = 2
 text = "Siguiente Nivel"
+
+[node name="Sir freeeeee" type="TextureRect" parent="." unique_id=157031000]
+layout_mode = 0
+offset_left = 218.0
+offset_top = 160.0
+offset_right = 344.0001
+offset_bottom = 336.00003
+texture = ExtResource("5_g4l6b")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sir freeeeee" unique_id=505746461]
+libraries/ = SubResource("AnimationLibrary_4bam0")
+script = ExtResource("6_ij85x")
+
+[node name="FOndo" type="TextureRect" parent="." unique_id=1115801161]
+z_index = -7
+texture_repeat = 2
+material = SubResource("ShaderMaterial_3onaq")
+layout_mode = 0
+offset_left = -3.0
+offset_top = -23.0
+offset_right = 346.0
+offset_bottom = 181.0
+texture = ExtResource("8_5ap7h")
+expand_mode = 1
+script = ExtResource("9_2pj0u")
 
 [connection signal="pressed" from="VBoxContainer/BotonSiguiente" to="." method="_on_boton_siguiente_pressed"]
