@@ -5,6 +5,7 @@ var monedas: int = 0
 var espada: bool = false
 var tiempo_final: int = 0
 var puntaje_total: int = 0
+var corazones: float = 3.0
 
 # Esta función hace el cálculo y guarda los datos
 func calcular_puntaje(tiempo_del_jugador: float) -> void:

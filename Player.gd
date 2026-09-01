@@ -21,7 +21,6 @@ var jump_buffer_time: float = 0.0
 const JUMP_BUFFER_TIME = 0.1
 
 #vida
-var health = 3
 var tiempo_daño = 0.0
 
 #aparecer
@@ -282,16 +281,16 @@ func _process(delta: float) -> void:
 	$CanvasLayer/Coins.text = "Coins: " + str(int(Global.monedas))
 	
 	#No se, ver vidas (La vara omg)
-	$CanvasLayer/Health/Heart.visible = health >= 0.5
-	$CanvasLayer/Health/Heart2.visible = health >= 1.5
-	$CanvasLayer/Health/Heart3.visible = health >= 2.5
+	$CanvasLayer/Health/Heart.visible = Global.corazones >= 0.5
+	$CanvasLayer/Health/Heart2.visible = Global.corazones >= 1.5
+	$CanvasLayer/Health/Heart3.visible = Global.corazones >= 2.5
 	
 func lose_health(enemigo_pos_x: float = 0.0) -> void:
 	if tiempo_daño > 0.0:
 		return
 	Hit_flash()
 	tiempo_daño = 0.8
-	health -= 0.5
+	Global.corazones -= 0.5
 	$Sprite2D.play("dmg")
 	jump_hold_time = 0.0
 	
@@ -303,25 +302,28 @@ func lose_health(enemigo_pos_x: float = 0.0) -> void:
 			direccion_empuje = 1
 	velocity.y = -200
 	velocity.x = direccion_empuje * 200
-	if health <= 0:
+	if Global.corazones <= 0:
 		morir()
 
 func caer_vacio() -> void:
-	health -= 1.0 # Quitamos 1 de vida entero (el equivalente a dos golpes de 0.5)
-	# Aquí no hay knockback ni tiempo de inmunidad, solo evaluamos si muere o reaparece
-	if health <= 0:
-		morir()
+	Global.corazones -= 1.0 # Te quita un corazón entero global
+	
+	if Global.corazones <= 0:
+		morir() # Si era tu último corazón, Game Over
 	else:
-		reaparecer()
+		# Si aún te quedan corazones, reiniciamos el nivel
+		get_tree().call_deferred("reload_current_scene")
 
 
 func morir() -> void:
 	time_elapsed = 0
 	Global.monedas = 0
-	get_tree().call_deferred("reload_current_scene")
-func reaparecer() -> void:
-	global_position = aparecer
-	velocity = Vector2.ZERO
+	
+	# Rellenamos los corazones a 3 para la próxima partida
+	Global.corazones = 3.0 
+	
+	# Te mandamos a la pantalla principal
+	get_tree().call_deferred("change_scene_to_file", "res://MenuPrincipal.tscn")
 
 #Hit Flash
 func Hit_flash() -> void:
