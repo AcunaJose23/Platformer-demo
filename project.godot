@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Platformer try 1 (Copy2)"
-run/main_scene="res://node_2d.tscn"
+run/main_scene="uid://c38b0gu2un4s5"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 

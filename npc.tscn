@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://dmn8fm0o3dam5"]
 
 [ext_resource type="Script" uid="uid://b3u8t3yptskd2" path="res://npc.gd" id="1_xxcha"]
-[ext_resource type="Texture2D" uid="uid://yf14xtxxxky4" path="res://icon.svg" id="2_kh24r"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ideak"]
+load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tbfu8"]
 size = Vector2(38, 38)
@@ -16,7 +18,7 @@ script = ExtResource("1_xxcha")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1948417188]
 position = Vector2(0.20000076, 0.20000076)
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_kh24r")
+texture = SubResource("CompressedTexture2D_ideak")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1972286070]
 position = Vector2(0.20000076, 0.20000076)

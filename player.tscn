@@ -212,7 +212,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eanf6"]
 radius = 5.5
-height = 34.0
+height = 20.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sc4of"]
 size = Vector2(29.25, 6)
@@ -235,6 +235,7 @@ sprite_frames = SubResource("SpriteFrames_nqvpf")
 animation = &"parry"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=839086912]
+position = Vector2(-2, 6)
 shape = SubResource("CapsuleShape2D_eanf6")
 
 [node name="HitboxEspada" type="Area2D" parent="." unique_id=10515278]
@@ -246,8 +247,10 @@ disabled = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1234578599]
 position = Vector2(0, -28)
-limit_left = 0
-limit_bottom = 175
+limit_left = -537
+limit_top = -9999819
+limit_right = 9999043
+limit_bottom = 356
 script = ExtResource("3_sweqy")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=463397133]
