@@ -4,8 +4,9 @@
 [ext_resource type="Shader" uid="uid://d2nq7phbmg0ro" path="res://coin_wobble.gdshader" id="2_pdq0q"]
 [ext_resource type="Texture2D" uid="uid://b7ftxdu0j7sq3" path="res://Sprites Plat/jkgersdfnijuertnijrtf9oiju.png" id="3_v7riw"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_tbfu8"]
-radius = 8.062258
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ycrjp"]
+radius = 197.0
+height = 638.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mhqpk"]
 shader = ExtResource("2_pdq0q")
@@ -107,13 +108,11 @@ collision_mask = 2
 script = ExtResource("1_0t63x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=950601889]
-position = Vector2(0, 4)
-shape = SubResource("CircleShape2D_tbfu8")
+position = Vector2(-5, 26)
+shape = SubResource("CapsuleShape2D_ycrjp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1544599672]
 material = SubResource("ShaderMaterial_mhqpk")
-position = Vector2(-0.99999994, 0)
-scale = Vector2(0.036449086, 0.037439756)
 sprite_frames = SubResource("SpriteFrames_sc4of")
 animation = &"coin"
 frame_progress = 0.09436238
