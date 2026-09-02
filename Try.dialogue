@@ -1,17 +1,14 @@
 ~ start
-Ian: Hola [[La vara|bot|bananin]], tenes que chabear
-- No
-	Ian: No me importa
+
+Granjero: Ay un caballero que puede ayudarme.... Ah no, solo eres tu Willington.
+Granjero: Bno supongo que eres el unico que puede ayudarme en este momento.
+Granjero: Unas monedas se me perdieron y necesito tu ayuda para recuperarlas, ¿me ayudas?
+
+- Sí, claro
 	set Global.nivel_destino = "res://lvl1.1.tscn"
-	do Global.cambiar_nivel("res://pantalla_puntuacion.tscn")
-	=> END
-- No, mejor dame un arma [[bot|bodrio|banano]]
-	Ian: Tene entonces
-	set Global.espada = true
-	set Global.nivel_destino = "res://prueba_boss.tscn"
 	do Transicion.cambiar_escena("res://pantalla_puntuacion.tscn")
 	=> END
-- Start again => start
-- End the conversation => END
-Nathan: For more information see the online documentation.
-=> END
+
+- No. 
+	Granjero: como quieras
+	=> END

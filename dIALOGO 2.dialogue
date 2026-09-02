@@ -1,0 +1,10 @@
+~ start
+Granjero: Oh al parecer lograste recoger un par de mis monedas, nada mal.
+Granjero: Bueno como lo hiciste tan bien te dare esto para que logres tu objetivo.
+Granjero: Ahora puedes presionar W para hacer un ataque de espada.
+
+- oh yeah
+	set Global.espada = true
+	set Global.nivel_destino = "res://prueba_boss.tscn"
+	do Transicion.cambiar_escena("res://pantalla_puntuacion.tscn")
+	=> END

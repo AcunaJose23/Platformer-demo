@@ -20,6 +20,10 @@ var active_branch : Node2D = null
 var jump_buffer_time: float = 0.0
 const JUMP_BUFFER_TIME = 0.1
 
+# --- NUEVO: Variables del Coyote Time ---
+var tiempo_coyote = 0.15
+var timer_coyote = 0.0
+
 #vida
 var tiempo_daño = 0.0
 
@@ -49,7 +53,7 @@ func _ready() -> void:
 		# Le decimos a la cámara que no pase de estos píxeles
 		$Camera2D.limit_left = limite_izq_camara
 		$Camera2D.limit_right = limite_der_camara
-	# --- NUEVO: Limpiar el Shader al nacer ---
+	# Limpiar el Shader al nacer
 	if $Sprite2D.material != null:
 		$Sprite2D.material.set_shader_parameter("charge_color", Color.WHITE)
 		$Sprite2D.material.set_shader_parameter("flash_amount", 0.0)
@@ -79,13 +83,13 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("Parry") and not haciendo_parry:
 			haciendo_parry = true
 		
-			# ¡Reproducimos la animación! (Asegúrate de que el nombre coincida exacto)
+			# ¡Reproducimos la animación!
 			$Sprite2D.play("parry") 
 			$HitboxEspada/CollisionShape2D.disabled = false 
-			# El tiempo activo del parry (Ajusta esto a lo que dure tu animación, ej: 0.3)
+			# El tiempo activo del parry
 			await get_tree().create_timer(0.3).timeout 
 			$HitboxEspada/CollisionShape2D.disabled = true 
-			haciendo_parry = false # Quitamos el cartel de "No molestar"
+			haciendo_parry = false 
 
 	# 1. Agarrarse a la rama
 	if active_branch != null and Input.is_action_just_pressed("grab") and not is_hanging:
@@ -134,6 +138,12 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		return
 	
+	# --- NUEVO: LÓGICA DEL CRONÓMETRO COYOTE ---
+	if is_on_floor():
+		timer_coyote = tiempo_coyote # Llenamos el cronómetro al tocar el piso
+	else:
+		timer_coyote -= delta # Vaciamos el cronómetro al estar en el aire
+
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -144,8 +154,9 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump"):
 		jump_buffer_time = JUMP_BUFFER_TIME
 
-	# Handle jump charge on floor.
-	if Input.is_action_pressed("charge_jump") and is_on_floor():
+	# Handle jump charge on floor 
+	# --- NUEVO: Cambiamos is_on_floor() por timer_coyote > 0.0 ---
+	if Input.is_action_pressed("charge_jump") and timer_coyote > 0.0:
 		jump_hold_time += delta
 		$Sprite2D.animation = "Jump"
 		$Sprite2D.stop()
@@ -170,15 +181,20 @@ func _physics_process(delta: float) -> void:
 			$Sprite2D.material.set_shader_parameter("charge_color", Color.WHITE)
 
 	# Execute jump buffer
-	if jump_buffer_time > 0.0 and is_on_floor():
+	# --- NUEVO: Cambiamos is_on_floor() por timer_coyote > 0.0 ---
+	if jump_buffer_time > 0.0 and timer_coyote > 0.0:
 		if jump_hold_time < 1.0:
 			velocity.y = JUMP_VELOCITY
 		elif jump_hold_time < 2.5:
 			velocity.y = JUMP_VELOCITY * 1.3
 		else:
 			velocity.y = JUMP_VELOCITY * 1.5
+			
 		jump_buffer_time = 0.0
 		jump_hold_time = 0.0
+		
+		# --- NUEVO: Matamos el coyote time al saltar para no doble saltar ---
+		timer_coyote = 0.0 
 		$Sprite2D.modulate = Color.WHITE
 		
 	# Orientación mientras se carga en el suelo
@@ -254,14 +270,14 @@ func _physics_process(delta: float) -> void:
 		
 		# 1. ORIENTACIÓN (Izquierda o Derecha)
 		if velocity.x > 0:
-			$Sprite2D.flip_h = false # Mirar a la derecha
+			$Sprite2D.flip_h = false 
 		elif velocity.x < 0:
-			$Sprite2D.flip_h = true  # Mirar a la izquierda
+			$Sprite2D.flip_h = true  
 			
 		# 2. ANIMACIÓN (Subiendo o Cayendo)
 		if tiempo_daño <= 0.0 and not haciendo_parry:
 			if velocity.y < 0:
-				$Sprite2D.play("air_up") # Yendo hacia arriba
+				$Sprite2D.play("air_up") 
 			else:
 				$Sprite2D.play("air_down")
 	move_and_slide()
@@ -275,12 +291,9 @@ func _process(delta: float) -> void:
 	else:
 		time_elapsed += delta
 	
-	# --- OPCIÓN 1: Solo segundos (Ej: "Tiempo: 15") ---
-	# Usamos int() para borrar los decimales
 	$CanvasLayer/Time.text = "Time: " + str(int(time_elapsed))
 	$CanvasLayer/Coins.text = "Coins: " + str(int(Global.monedas))
 	
-	#No se, ver vidas (La vara omg)
 	$CanvasLayer/Health/Heart.visible = Global.corazones >= 0.5
 	$CanvasLayer/Health/Heart2.visible = Global.corazones >= 1.5
 	$CanvasLayer/Health/Heart3.visible = Global.corazones >= 2.5
@@ -306,12 +319,11 @@ func lose_health(enemigo_pos_x: float = 0.0) -> void:
 		morir()
 
 func caer_vacio() -> void:
-	Global.corazones -= 1.0 # Te quita un corazón entero global
+	Global.corazones -= 1.0 
 	
 	if Global.corazones <= 0:
-		morir() # Si era tu último corazón, Game Over
+		morir() 
 	else:
-		# Si aún te quedan corazones, reiniciamos el nivel
 		get_tree().call_deferred("reload_current_scene")
 
 
@@ -319,25 +331,18 @@ func morir() -> void:
 	time_elapsed = 0
 	Global.monedas = 0
 	
-	# Rellenamos los corazones a 3 para la próxima partida
 	Global.corazones = 3.0 
 	
-	# Te mandamos a la pantalla principal
 	Transicion.cambiar_escena("res://PantallaMuerte.tscn")
 
 #Hit Flash
 func Hit_flash() -> void:
-	# Verificamos que el Sprite tenga el Material asignado para evitar errores
 	if $Sprite2D.material != null:
-		# Ponemos el destello al máximo (blanco total)
 		$Sprite2D.material.set_shader_parameter("flash_amount", 1.0)
-		
-		# Creamos una animación (Tween) para devolverlo a 0.0 en 0.2 segundos
 		var tween = create_tween()
 		tween.tween_property($Sprite2D.material, "shader_parameter/flash_amount", 0.0, 0.2)
 
 
 func _on_hitbox_espada_area_entered(area: Area2D) -> void:
-	# Si la espada choca con algo que esté en el grupo "bola_fuego"...
 	if area.is_in_group("bola_fuego") and area.has_method("ser_parreada"):
-		area.ser_parreada() # ¡Le hacemos el parry!
+		area.ser_parreada()

@@ -110,6 +110,7 @@ func recibir_dano() -> void:
 func morir() -> void:
 	queue_free()
 
+
 # --- Funciones de Disparo ---
 func disparar_fuego() -> void:
 	# Si le están pegando, cancelamos el ataque y lo intentamos de nuevo más tarde

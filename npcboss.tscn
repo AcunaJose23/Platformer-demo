@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://b2t4yg7ad68j8"]
+
+[ext_resource type="Script" uid="uid://0fup0vm52u8b" path="res://npcboss.gd" id="1_muhxl"]
+[ext_resource type="Texture2D" uid="uid://bnk1xra08utd2" path="res://brackeys_platformer_assets/sprites/NPC.png" id="2_bjh53"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kaqm"]
+atlas = ExtResource("2_bjh53")
+region = Rect2(0, 0, 202, 302)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sc4of"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kaqm")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_owrym"]
+height = 48.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nqvpf"]
+radius = 73.68175
+
+[node name="NPCBOSS" type="CharacterBody2D" unique_id=251499468]
+collision_layer = 0
+script = ExtResource("1_muhxl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1784223479]
+scale = Vector2(0.17, 0.17)
+sprite_frames = SubResource("SpriteFrames_sc4of")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=397612265]
+shape = SubResource("CapsuleShape2D_owrym")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2114424589]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=797304788]
+shape = SubResource("CircleShape2D_nqvpf")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

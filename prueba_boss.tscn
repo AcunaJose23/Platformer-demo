@@ -152,8 +152,8 @@ position = Vector2(-189, 268)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=794059896]
 z_index = -6
-position = Vector2(158.4375, 96.5)
-scale = Vector2(0.21458724, 0.3214683)
+position = Vector2(168.9375, 96.5)
+scale = Vector2(0.22772044, 0.3214683)
 texture = ExtResource("10_d3q7g")
 
 [connection signal="area_entered" from="CabezaBoss" to="CabezaBoss" method="_on_area_entered"]
