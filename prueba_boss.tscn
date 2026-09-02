@@ -148,7 +148,7 @@ position = Vector2(1.9999999, 4.3999996)
 shape = SubResource("CircleShape2D_sc4of")
 
 [node name="void" parent="." unique_id=816054852 instance=ExtResource("8_yxpl7")]
-position = Vector2(-189, 268)
+position = Vector2(-1350, 368)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=794059896]
 z_index = -6

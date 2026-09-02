@@ -109,7 +109,8 @@ func recibir_dano() -> void:
 
 func morir() -> void:
 	queue_free()
-
+	Global.nivel_destino = "res://MenuPrincipal.tscn"
+	Transicion.cambiar_escena("res://pantalla_puntuacion.tscn")
 
 # --- Funciones de Disparo ---
 func disparar_fuego() -> void:
