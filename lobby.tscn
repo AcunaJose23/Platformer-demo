@@ -70,4 +70,4 @@ scale = Vector2(0.20956455, 0.23884177)
 texture = ExtResource("6_x4164")
 
 [node name="npc" parent="." unique_id=361264881 instance=ExtResource("7_8ldoj")]
-position = Vector2(-404, -19)
+position = Vector2(-405, -24)

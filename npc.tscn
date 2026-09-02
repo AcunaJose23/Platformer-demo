@@ -1,11 +1,44 @@
 [gd_scene format=3 uid="uid://dmn8fm0o3dam5"]
 
 [ext_resource type="Script" uid="uid://b3u8t3yptskd2" path="res://npc.gd" id="1_xxcha"]
+[ext_resource type="Texture2D" uid="uid://bnk1xra08utd2" path="res://brackeys_platformer_assets/sprites/NPC.png" id="2_xxcha"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxcha"]
+atlas = ExtResource("2_xxcha")
+region = Rect2(202, 0, 202, 302)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ul7y6"]
+atlas = ExtResource("2_xxcha")
+region = Rect2(404, 0, 202, 302)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kh24r"]
+atlas = ExtResource("2_xxcha")
+region = Rect2(0, 0, 202, 302)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sc4of"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxcha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ul7y6")
+}],
+"loop": 1,
+"name": &"Talk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kh24r")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbfu8"]
-size = Vector2(38, 38)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2h3mo"]
+height = 50.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sc4of"]
 radius = 62.072536
@@ -16,19 +49,18 @@ script = ExtResource("1_xxcha")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=236701273]
 position = Vector2(0.20000076, 0.20000076)
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.17, 0.17)
 sprite_frames = SubResource("SpriteFrames_sc4of")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1972286070]
-position = Vector2(0.20000076, 0.20000076)
-shape = SubResource("RectangleShape2D_tbfu8")
+shape = SubResource("CapsuleShape2D_2h3mo")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=187767918]
-position = Vector2(0.20000076, 0.20000076)
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=539768091]
+position = Vector2(-0.20000076, -0.20000076)
 shape = SubResource("CircleShape2D_sc4of")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
