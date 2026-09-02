@@ -7,6 +7,10 @@
 atlas = ExtResource("2_bjh53")
 region = Rect2(0, 0, 202, 302)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_muhxl"]
+atlas = ExtResource("2_bjh53")
+region = Rect2(202, 0, 202, 302)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_sc4of"]
 animations = [{
 "frames": [{
@@ -15,6 +19,14 @@ animations = [{
 }],
 "loop": 1,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_muhxl")
+}],
+"loop": 1,
+"name": &"talk",
 "speed": 5.0
 }]
 
@@ -31,6 +43,7 @@ script = ExtResource("1_muhxl")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1784223479]
 scale = Vector2(0.17, 0.17)
 sprite_frames = SubResource("SpriteFrames_sc4of")
+animation = &"talk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=397612265]
 shape = SubResource("CapsuleShape2D_owrym")
