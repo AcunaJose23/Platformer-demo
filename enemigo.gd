@@ -2,7 +2,9 @@ extends CharacterBody2D
 
 # --- CONFIGURACIÓN DE VELOCIDADES ---
 var speed_patrulla = 50.0
-var speed_embestida = 120.0 
+var speed_embestida = 170.0 
+@onready var puerco: AudioStreamPlayer2D = $Puerco
+
 
 # --- VARIABLES DE EMBESTIDA ---
 var embistiendo = false

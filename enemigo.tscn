@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://d1bvtlrjjh2wo" path="res://enemigo.gd" id="1_a5tj2"]
 [ext_resource type="Texture2D" uid="uid://dh8e2f3tu7u8u" path="res://brackeys_platformer_assets/sprites/Enemy/chancho.png" id="2_moxti"]
 [ext_resource type="Shape2D" uid="uid://cg0klphhp0y0e" path="res://Chancho_col.tres" id="3_bnx68"]
+[ext_resource type="AudioStream" uid="uid://bwv5h5ama8vyr" path="res://Sprites Plat/freesound_community-pig-oink-47167.mp3" id="4_bnx68"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j8qs0"]
 atlas = ExtResource("2_moxti")
@@ -168,6 +169,10 @@ shape = SubResource("RectangleShape2D_nqvpf")
 position = Vector2(5, 1)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_m2jpo")
+
+[node name="Puerco" type="AudioStreamPlayer2D" parent="." unique_id=108835691]
+stream = ExtResource("4_bnx68")
+volume_db = 10.0
 
 [connection signal="body_entered" from="Daño" to="." method="_on_daño_body_entered"]
 [connection signal="body_entered" from="ZonaVision" to="." method="_on_zona_vision_body_entered"]

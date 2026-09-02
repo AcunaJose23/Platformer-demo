@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://br2ipagdeq0ih"
+path="res://.godot/imported/Y2Mate.is - Chickpeas Adventure.mp3-00ddc1c3841d98f89f3c4b2e49670e1a.mp3str"
+
+[deps]
+
+source_file="res://addons/dialogue_manager/Y2Mate.is - Chickpeas Adventure.mp3"
+dest_files=["res://.godot/imported/Y2Mate.is - Chickpeas Adventure.mp3-00ddc1c3841d98f89f3c4b2e49670e1a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

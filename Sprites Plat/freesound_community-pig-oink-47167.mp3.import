@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bwv5h5ama8vyr"
+path="res://.godot/imported/freesound_community-pig-oink-47167.mp3-24d98e1c4d713514b795862762f033c9.mp3str"
+
+[deps]
+
+source_file="res://Sprites Plat/freesound_community-pig-oink-47167.mp3"
+dest_files=["res://.godot/imported/freesound_community-pig-oink-47167.mp3-24d98e1c4d713514b795862762f033c9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

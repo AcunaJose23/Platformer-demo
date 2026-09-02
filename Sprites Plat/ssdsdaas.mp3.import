@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ctfnrobgem2fu"
+path="res://.godot/imported/ssdsdaas.mp3-02107b4e6da629efcf64dbc46e64174d.mp3str"
+
+[deps]
+
+source_file="res://Sprites Plat/ssdsdaas.mp3"
+dest_files=["res://.godot/imported/ssdsdaas.mp3-02107b4e6da629efcf64dbc46e64174d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
