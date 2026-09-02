@@ -323,7 +323,7 @@ func morir() -> void:
 	Global.corazones = 3.0 
 	
 	# Te mandamos a la pantalla principal
-	get_tree().call_deferred("change_scene_to_file", "res://PantallaMuerte.tscn")
+	Transicion.cambiar_escena("res://PantallaMuerte.tscn")
 
 #Hit Flash
 func Hit_flash() -> void:

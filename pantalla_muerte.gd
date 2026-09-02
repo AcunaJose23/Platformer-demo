@@ -5,4 +5,4 @@ func _on_button_pressed() -> void:
 	Global.corazones = 3.0 
 	
 	# 2. Ahora sí, lo mandamos al menú animado que arreglaste
-	get_tree().change_scene_to_file("res://MenuPrincipal.tscn")
+	Transicion.cambiar_escena("res://MenuPrincipal.tscn")

@@ -7,6 +7,8 @@ var tiempo_final: int = 0
 var puntaje_total: int = 0
 var corazones: float = 3.0
 
+var nivel_destino: String = ""
+
 # Esta función hace el cálculo y guarda los datos
 func calcular_puntaje(tiempo_del_jugador: float) -> void:
 	tiempo_final = int(tiempo_del_jugador)
