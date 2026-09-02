@@ -328,6 +328,7 @@ func caer_vacio() -> void:
 
 
 func morir() -> void:
+	Global.espada = false
 	time_elapsed = 0
 	Global.monedas = 0
 	

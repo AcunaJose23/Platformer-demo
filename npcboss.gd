@@ -27,7 +27,7 @@ func _process(_delta: float) -> void:
 			
 			# --- NUEVO 3: Activamos la animación justo antes del texto ---
 			is_talking = true
-			$AnimatedSprite2D.play("Talk")
+			$AnimatedSprite2D.play("talk")
 			
 			Global.calcular_puntaje(player_node.time_elapsed)
 			DialogueManager.show_dialogue_balloon(load("res://dIALOGO 2.dialogue"), "start")
