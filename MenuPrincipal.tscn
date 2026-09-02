@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dvmcu74nrktuo"]
 
 [ext_resource type="Texture2D" uid="uid://bnjaevu7pnshc" path="res://Sprites Plat/Escena.png" id="1_8u8qs"]
+[ext_resource type="Script" uid="uid://p7vv1os7l4yp" path="res://MenuPrincipal.gd" id="1_udyb3"]
 [ext_resource type="Texture2D" uid="uid://ctp1phck6um8c" path="res://Sprites Plat/Mondragon.png" id="2_cuwxx"]
 [ext_resource type="Script" uid="uid://bi2xcgtn0qcr6" path="res://dragon.gd" id="3_udyb3"]
 [ext_resource type="Texture2D" uid="uid://iotxsbsp4f0p" path="res://Sprites Plat/sirfree.png" id="4_67kw8"]
@@ -25,6 +26,7 @@
 [ext_resource type="Script" uid="uid://cn2s8hgi2ne2u" path="res://texture_rect_3.gd" id="23_qer0m"]
 [ext_resource type="Texture2D" uid="uid://dd1nbysf55p3k" path="res://Sprites Plat/Bola 7.png" id="24_gpmlq"]
 [ext_resource type="Script" uid="uid://bntu8hlky2t5q" path="res://texture_rect_4.gd" id="25_2tcpk"]
+[ext_resource type="Texture2D" uid="uid://dcb3neve7e7ng" path="res://Sprites Plat/Start.png" id="27_67kw8"]
 
 [node name="MenuPrincipal" type="Control" unique_id=1202600619]
 layout_mode = 3
@@ -34,6 +36,7 @@ anchor_bottom = 1.0
 offset_right = 25.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_udyb3")
 
 [node name="Fondo" type="TextureRect" parent="." unique_id=453622359]
 z_index = -25
@@ -165,3 +168,22 @@ offset_bottom = 220.0
 texture = ExtResource("24_gpmlq")
 expand_mode = 1
 script = ExtResource("25_2tcpk")
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=1915096342]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -142.0
+offset_top = -198.0
+offset_right = 120.5
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("27_67kw8")
+ignore_texture_size = true
+stretch_mode = 4
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
