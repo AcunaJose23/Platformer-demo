@@ -78,19 +78,19 @@ script = ExtResource("7_yswkv")
 
 [node name="Sirrr" type="TextureRect" parent="." unique_id=2036238220]
 layout_mode = 0
-offset_left = -51.0
-offset_top = -7.0
-offset_right = 248.0
-offset_bottom = 223.0
+offset_left = 9.0
+offset_top = -9.0
+offset_right = 308.0
+offset_bottom = 221.0
 texture = ExtResource("8_te3so")
 expand_mode = 1
 script = ExtResource("9_n247l")
 
 [node name="Freeee" type="TextureRect" parent="." unique_id=1365002276]
 layout_mode = 0
-offset_left = -19.0
+offset_left = 22.0
 offset_top = -7.0
-offset_right = 266.0
+offset_right = 307.0
 offset_bottom = 202.0
 texture = ExtResource("10_fmqyt")
 expand_mode = 1
@@ -98,10 +98,10 @@ script = ExtResource("11_b0c6e")
 
 [node name="pene" type="TextureRect" parent="." unique_id=2086694081]
 layout_mode = 0
-offset_left = 11.0
-offset_top = -17.0
-offset_right = 286.0
-offset_bottom = 185.0
+offset_left = 28.0
+offset_top = -18.0
+offset_right = 303.0
+offset_bottom = 184.0
 texture = ExtResource("12_ghean")
 expand_mode = 1
 script = ExtResource("13_6g1hx")
@@ -138,20 +138,20 @@ script = ExtResource("19_vghw2")
 
 [node name="TextureRect2" type="TextureRect" parent="." unique_id=1719151604]
 layout_mode = 0
-offset_left = 227.0
-offset_top = 2.0
-offset_right = 532.0
-offset_bottom = 218.0
+offset_left = 246.0
+offset_top = -15.0
+offset_right = 551.0
+offset_bottom = 201.0
 texture = ExtResource("20_jm1nc")
 expand_mode = 1
 script = ExtResource("21_3kgkn")
 
 [node name="TextureRect3" type="TextureRect" parent="." unique_id=1336940949]
 layout_mode = 0
-offset_left = 188.0
-offset_top = 19.0
-offset_right = 457.0
-offset_bottom = 218.0
+offset_left = 200.0
+offset_top = 17.0
+offset_right = 469.0
+offset_bottom = 216.0
 texture = ExtResource("22_s20ck")
 expand_mode = 1
 script = ExtResource("23_qer0m")
