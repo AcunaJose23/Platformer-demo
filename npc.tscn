@@ -2,8 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b3u8t3yptskd2" path="res://npc.gd" id="1_xxcha"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ideak"]
-load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+[sub_resource type="SpriteFrames" id="SpriteFrames_sc4of"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tbfu8"]
 size = Vector2(38, 38)
@@ -15,10 +14,10 @@ radius = 62.072536
 collision_layer = 0
 script = ExtResource("1_xxcha")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1948417188]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=236701273]
 position = Vector2(0.20000076, 0.20000076)
 scale = Vector2(0.3, 0.3)
-texture = SubResource("CompressedTexture2D_ideak")
+sprite_frames = SubResource("SpriteFrames_sc4of")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1972286070]
 position = Vector2(0.20000076, 0.20000076)
