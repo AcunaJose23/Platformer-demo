@@ -4,9 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://c5jf8uffwqx2s" path="res://brackeys_platformer_assets/sprites/BLOQUE SIKGSDKLJSNLKIJKS.png" id="2_ktmlk"]
 [ext_resource type="Texture2D" uid="uid://dueuk38uslgjm" path="res://brackeys_platformer_assets/sprites/Tierra.png" id="3_iuogc"]
 [ext_resource type="PackedScene" uid="uid://dg2oga0mgeqqv" path="res://Boss tscn/cola_boss.tscn" id="4_3pa4b"]
-[ext_resource type="Texture2D" uid="uid://dg0075pcjykgb" path="res://brackeys_platformer_assets/sprites/dragon_head.png" id="5_iuogc"]
 [ext_resource type="Script" uid="uid://dpxe7te4ggqdo" path="res://CabezaBoss.gd" id="6_3pa4b"]
 [ext_resource type="PackedScene" uid="uid://vcur3k2mvpg3" path="res://bola_fuego.tscn" id="6_yxpl7"]
+[ext_resource type="Texture2D" uid="uid://dmeq8i4dk3c27" path="res://Sprites Plat/Mondragon attack.png" id="7_i4ms0"]
+[ext_resource type="Texture2D" uid="uid://ty7ulujousdl" path="res://Sprites Plat/Mondragon default.png" id="7_yxpl7"]
 [ext_resource type="PackedScene" uid="uid://cutpqmw6mxkx3" path="res://void.tscn" id="8_yxpl7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yxpl7"]
@@ -39,6 +40,76 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_yxpl7")
 sources/1 = SubResource("TileSetAtlasSource_i4ms0")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_xm3bn"]
+atlas = ExtResource("7_i4ms0")
+region = Rect2(0, 0, 2749, 1979)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cofeb"]
+atlas = ExtResource("7_i4ms0")
+region = Rect2(0, 1979, 2749, 1979)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3q7g"]
+atlas = ExtResource("7_yxpl7")
+region = Rect2(2749, 0, 2749, 1979)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5nn4"]
+atlas = ExtResource("7_yxpl7")
+region = Rect2(0, 1979, 2749, 1979)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebmtc"]
+atlas = ExtResource("7_i4ms0")
+region = Rect2(2749, 0, 2749, 1979)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4ms0"]
+atlas = ExtResource("7_yxpl7")
+region = Rect2(0, 0, 2749, 1979)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sc4of"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xm3bn")
+}],
+"loop": 0,
+"name": &"charge",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cofeb")
+}],
+"loop": 0,
+"name": &"damaged",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3q7g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j5nn4")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebmtc")
+}],
+"loop": 0,
+"name": &"shoot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4ms0")
+}],
+"loop": 1,
+"name": &"up",
+"speed": 5.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_sc4of"]
 radius = 14.091132
 
@@ -65,9 +136,10 @@ escena_bola = ExtResource("6_yxpl7")
 player = NodePath("../Player")
 cola_boss = NodePath("../ColaBoss")
 
-[node name="Sprite2D" type="Sprite2D" parent="CabezaBoss" unique_id=123239751]
-scale = Vector2(0.99999994, 0.99999994)
-texture = ExtResource("5_iuogc")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="CabezaBoss" unique_id=1306317375]
+z_index = -1
+scale = Vector2(0.03, 0.03)
+sprite_frames = SubResource("SpriteFrames_sc4of")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CabezaBoss" unique_id=1090100426]
 position = Vector2(1.9999999, 4.3999996)
